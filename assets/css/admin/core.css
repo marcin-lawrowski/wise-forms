@@ -1,0 +1,15 @@
+/**
+ * WiseForms admin core CSS.
+ *
+ * @author Kainex <contact@kaine.pl>
+ */
+
+.wfClear {
+    clear: both; line-height: 0.1%; font-size: 0.1%; height: 0.1%;
+}
+
+
+.wfAdminPage #poststuff h3.hndle {
+    background-color: #4F3B5E;
+    color: #fff;
+}
