@@ -12,6 +12,8 @@ class WiseFormsCore {
 	 */
 	private $jsAssetsAdmin = array(
 		'cbpFWTabs.js',
+		'core-fields.js',
+		'core-designer.js',
 		'core.js',
 	);
 

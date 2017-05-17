@@ -3,7 +3,7 @@
 
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
-			<form action="<?php echo $form->getId() > 0 ? $this->getObjectSaveUrl($form->getId()) : $this->getObjectAddUrl(); ?>" method="POST">
+			<form class="wfFormAddEdit" action="<?php echo $form->getId() > 0 ? $this->getObjectSaveUrl($form->getId()) : $this->getObjectAddUrl(); ?>" method="POST">
 
 				<div id="postbox-container-1" class="postbox-container">
 					<div id="side-sortables" class="meta-box-sortables ui-sortable" style="">
@@ -62,7 +62,9 @@
 						<section id="wf-tab-base">
 							<?php include('FormAddEdit-HomeTab.php'); ?>
 						</section>
-						<section id="wf-tab-fields"><p>2</p></section>
+						<section id="wf-tab-fields">
+							<?php include('FormAddEdit-FieldsTab.php'); ?>
+						</section>
 						<section id="wf-tab-messages"><p>3</p></section>
 						<section id="wf-tab-target"><p>4</p></section>
 						<section id="wf-tab-advanced"><p>5</p></section>

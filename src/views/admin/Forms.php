@@ -29,7 +29,7 @@
 			<?php foreach ($objects as $object) { ?>
 				<tr>
 					<td><?php echo $object->getId(); ?></td>
-					<td><?php echo $object->getName(); ?></td>
+					<td><a href="<?php echo $this->getEditUrl($object->getId()); ?>"><?php echo $object->getName(); ?></a></td>
 					<td><a href="<?php echo $this->getEditUrl($object->getId()); ?>" class="button button-primary button-small">Edit</a></td>
 				</tr>
 			<?php } ?>

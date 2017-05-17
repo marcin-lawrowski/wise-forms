@@ -6,29 +6,19 @@
 		<div class="inside">
 			<table class="links-table" cellpadding="0">
 				<tbody>
-				<?php if ($form->getId() > 0) { ?>
 					<tr>
 						<th scope="row">
-							<label>ID</label>
+							<label for="name">Name</label>
 						</th>
 						<td>
-							<?php echo $form->getId(); ?>
+							<input name="name" type="text" id="name" value="<?php echo $this->safeText($form->getName()); ?>" class="regular-text" required />
 						</td>
 					</tr>
-				<?php } ?>
-				<tr>
-					<th scope="row">
-						<label for="name">Name</label>
-					</th>
-					<td>
-						<input name="name" type="text" id="name" value="<?php echo $this->safeText($form->getName()); ?>" class="regular-text" required />
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
+					<tr>
+						<td colspan="2">
 
-					</td>
-				</tr>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>

@@ -4,12 +4,85 @@
  * @author Kainex <contact@kaine.pl>
  */
 
+.wfAdminPage #poststuff h3.hndle {
+    background-color: #4F3B5E; border: 1px solid #4F3B5E; border-bottom: none;
+    color: #fff;
+}
+
+/* Common styles: */
 .wfClear {
     clear: both; line-height: 0.1%; font-size: 0.1%; height: 0.1%;
 }
 
+.wfLeft {
+    float: left;
+}
 
-.wfAdminPage #poststuff h3.hndle {
-    background-color: #4F3B5E;
-    color: #fff;
+.wfHidden {
+    display: none;
+}
+
+/* Designer layout styles: */
+.wfDesigner {
+    overflow: hidden;
+}
+
+.wfDesigner ul {
+    list-style-type: none; margin: 0; padding: 0; margin-bottom: 10px;
+}
+.wfDesigner li {
+    margin: 5px; padding: 5px; width: auto;
+}
+
+.wfDesigner .wfDesignerLeft {
+    float: left; width: 250px;
+}
+
+.wfDesigner .wfDesignerCenter {
+    margin: 0 250px; overflow-x: auto; white-space: nowrap;
+}
+
+.wfDesigner .wfDesignerRight {
+    float: right; width: 250px;
+}
+
+.wfDesigner .wfDesignerForm {
+    width: 500px; margin: 0 auto;
+    background-color: #dedede; border: 1px solid #aeaeae;
+}
+
+.wfDesigner .wfDesignerToolBox {
+    background-color: #dedede; border: 1px solid #aeaeae;
+}
+
+.wfDesigner .wfDesignerToolBox h4 {
+    margin: 0; padding: 8px 12px; text-align: center; font-weight: normal;
+    border-bottom: 1px solid #aeaeae; background-color: #4F3B5E; color: #fff;
+    font-size: 14px; line-height: 1.4;
+}
+
+.wfDesigner .wfDesignerToolBox .wfDesignerToolBoxContent {
+    margin: 0; padding: 2px;
+}
+
+.wfDesigner .wfDesignerFieldsContainer {
+    min-height: 50px;
+}
+
+/* Form preview styles: */
+.wf2Col {
+    width: 48%; float: left; display: block; min-height: 20px;
+    margin: 2px; border: 1px dotted #aeaeae;
+}
+
+.wf2ColLast {
+    float: right;
+}
+
+.wf100RemaingWidth {
+    display: block; overflow: hidden; padding-right: 5px; padding-left: 5px;
+}
+
+.wf100RemaingWidth > input {
+    width: 100%;
 }

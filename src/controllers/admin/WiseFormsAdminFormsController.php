@@ -81,6 +81,7 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 
 		if ($form !== null) {
 			$form->setName($this->getPostParam('name'));
+			$form->setFields($this->getPostParam('fields'));
 			$this->formsDao->save($form);
 
 			$this->addMessage('Form has been saved.');
