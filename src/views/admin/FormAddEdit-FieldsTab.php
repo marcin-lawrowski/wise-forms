@@ -62,8 +62,8 @@
 	<div class='wfDesignerCenter'>
 
 		<div class="wfDesignerForm">
-			<ul class="wfDesignerFieldsContainer">
-
+			<ul class="wfDesignerFieldsContainer wfDesignerFieldsContainerHinted">
+				<li class="wfDesignerFieldsHint">Drop fields here</li>
 			</ul>
 		</div>
 	</div>

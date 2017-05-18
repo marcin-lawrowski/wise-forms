@@ -1,7 +1,6 @@
 <!-- Field Properties Forms: -->
 <script id="textInputTemplateProperties" type="text/template">
 	<div>
-
 		<table>
 			<tr>
 				<td colspan="2"><label for="label">Label: </label></td>

@@ -120,12 +120,21 @@ wiseforms.admin.core.Designer = function(options) {
 		return null;
 	}
 
+	function removeFieldsHint() {
+		fieldsContainer.removeClass('wfDesignerFieldsContainerHinted');
+		fieldsContainer.find('li.wfDesignerFieldsHint').remove();
+	}
+
 	function updateFieldPreviewFromTemplate(element) {
 		var fieldType = element.data('field-template-type');
 		if (typeof fieldType !== 'undefined' && fieldType !== null) {
 			var fieldInstance = getFieldInstance(fieldType);
 
 			if (fieldInstance !== null) {
+				// remove hint:
+				removeFieldsHint();
+
+				// add field:
 				element.replaceWith(fieldInstance);
 				element.data('field-template-type', null);
 			} else {
@@ -235,6 +244,7 @@ wiseforms.admin.core.Designer = function(options) {
 			}
 
 			if (fieldInstance !== null) {
+				removeFieldsHint();
 				parent.append(fieldInstance);
 			}
 		}

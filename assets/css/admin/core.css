@@ -89,6 +89,13 @@
     min-height: 50px;
 }
 
+.wfDesigner .wfDesignerFieldsContainer .wfDesignerFieldsHint {
+    color: #9a9a9a; font-size: 1.5em; text-align: center;
+}
+
+.wfDesigner .wfDesignerFieldsContainerHinted {
+    border: 2px dashed #9a9a9a; margin-bottom: 0; padding-top: 5px;
+}
 
 /* Form preview styles: */
 .wf2Col {
