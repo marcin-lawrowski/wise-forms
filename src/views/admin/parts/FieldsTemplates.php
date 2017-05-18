@@ -6,8 +6,9 @@
 </script>
 
 <script id="textAreaTemplate" type="text/template">
-	<label>Long text:</label><br />
-	<textarea></textarea>
+	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+	<br />
+	<span><textarea></textarea></span>
 </script>
 
 <script id="paragraphTemplate" type="text/template">

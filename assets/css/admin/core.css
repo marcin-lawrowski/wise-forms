@@ -111,6 +111,6 @@
     display: block; overflow: hidden; padding-right: 5px; padding-left: 5px;
 }
 
-.wf100RemaingWidth > input {
+.wf100RemaingWidth > input, .wf100RemaingWidth > textarea {
     width: 100%;
 }
