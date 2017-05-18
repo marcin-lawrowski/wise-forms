@@ -12,7 +12,7 @@
 </script>
 
 <script id="paragraphTemplate" type="text/template">
-	Enter text here
+	<p class="wfWordWrap"></p>
 </script>
 
 <script id="container2ColsTemplate" type="text/template">

@@ -80,3 +80,16 @@
 		</table>
 	</div>
 </script>
+
+<script id="paragraphTemplateProperties" type="text/template">
+	<div>
+		<table>
+			<tr>
+				<td colspan="2"><label for="text">Text: </label></td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea id="text" name="text" class="wfFullWidth"></textarea></td>
+			</tr>
+		</table>
+	</div>
+</script>

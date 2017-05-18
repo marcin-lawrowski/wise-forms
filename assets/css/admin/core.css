@@ -97,6 +97,10 @@
     border: 2px dashed #9a9a9a; margin-bottom: 0; padding-top: 5px;
 }
 
+.wfDesigner .wfDesignerFieldInstanceProperties .wfParagraphType textarea {
+    height: 200px;
+}
+
 /* Form preview styles: */
 .wf2Col {
     width: 48%; float: left; display: block; min-height: 20px;
@@ -113,4 +117,13 @@
 
 .wf100RemaingWidth > input, .wf100RemaingWidth > textarea {
     width: 100%;
+}
+
+.wfWordWrap {
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    word-break: break-all;
+    white-space: normal;
 }

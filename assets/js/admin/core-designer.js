@@ -48,6 +48,7 @@ wiseforms.admin.core.Designer = function(options) {
 		e.stopPropagation();
 		var fieldInstance = jQuery(this).closest('.wfFieldInstance');
 		var fieldType = fieldInstance.data('type');
+		var fieldTypeUppercase = fieldType.charAt(0).toUpperCase() + fieldType.slice(1);
 		var propertiesContainer = container.find('.wfDesignerFieldInstanceProperties');
 
 		var fieldConfiguration = getFieldConfigurationByType(fieldType);
@@ -55,7 +56,7 @@ wiseforms.admin.core.Designer = function(options) {
 			var templateElement = jQuery('#' + fieldConfiguration.propertiesTemplateElementId);
 
 			// render properties form:
-			propertiesContainer.find('.wfDesignerToolBoxContent').html(templateElement.html());
+			propertiesContainer.find('.wfDesignerToolBoxContent').addClass('wf' + fieldTypeUppercase + 'Type').html(templateElement.html());
 			propertiesContainer.find('h4').text(fieldConfiguration.name + ' Properties');
 			propertiesContainer.show();
 
@@ -73,7 +74,7 @@ wiseforms.admin.core.Designer = function(options) {
 			}
 
 			// text property:
-			propertiesContainer.find('input[type="text"]').keyup(function(e) {
+			propertiesContainer.find('input[type="text"], textarea').keyup(function(e) {
 				var element = jQuery(event.target);
 				storeValueAndRender(element.attr('name'), element.val(), fieldInstance);
 			});

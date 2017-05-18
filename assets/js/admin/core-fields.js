@@ -109,7 +109,20 @@ wiseforms.admin.core.Fields = [
 	{
 		type: 'paragraph',
 		name: 'Paragraph',
-		templateElementId: 'paragraphTemplate'
+		templateElementId: 'paragraphTemplate',
+		propertiesTemplateElementId: 'paragraphTemplateProperties',
+
+		renderFromProperties: function(properties, fieldInstance) {
+			fieldInstance.find('p').text(properties.text);
+		},
+
+		renderPropertiesForm: function(properties, propertiesFormInstance) {
+			propertiesFormInstance.find('*[name="text"]').val(properties.text);
+		},
+
+		initialProperties: {
+			text: 'Paragraph Text'
+		}
 	},
 	{
 		type: 'buttonSubmit',
