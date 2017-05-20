@@ -30,3 +30,9 @@
 		<input type="button" value="Submit" />
 	</div>
 </script>
+
+<script id="dropDownListTemplate" type="text/template">
+	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+	<br />
+	<span><select></select></span>
+</script>

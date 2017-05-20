@@ -101,6 +101,10 @@
     height: 200px;
 }
 
+.wfDesigner .wfDesignerFieldInstanceProperties .wfDropDownListType textarea {
+    height: 200px;
+}
+
 /* Form preview styles: */
 .wf2Col {
     width: 48%; float: left; display: block; min-height: 20px;
@@ -115,7 +119,7 @@
     display: block; overflow: hidden; padding-right: 5px; padding-left: 5px;
 }
 
-.wf100RemaingWidth > input, .wf100RemaingWidth > textarea {
+.wf100RemaingWidth > input, .wf100RemaingWidth > textarea, .wf100RemaingWidth > select {
     width: 100%;
 }
 

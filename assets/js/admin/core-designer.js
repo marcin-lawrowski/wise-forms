@@ -63,6 +63,11 @@ wiseforms.admin.core.Designer = function(options) {
 			function storeValueAndRender(propertyName, propertyValue, fieldInstance) {
 				var currentProperties = getCurrentProperties(fieldInstance);
 
+				// map property:
+				if (typeof fieldConfiguration.mapProperty !== 'undefined') {
+					propertyValue = fieldConfiguration.mapProperty(propertyName, propertyValue, fieldInstance);
+				}
+
 				currentProperties[propertyName] = propertyValue;
 				fieldInstance.data('properties', jQuery.extend(true, {}, currentProperties));
 

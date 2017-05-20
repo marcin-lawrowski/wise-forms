@@ -39,6 +39,7 @@
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="container2Cols">2 cols</li>
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="paragraph">Paragraph</li>
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="buttonSubmit">Submit button</li>
+					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="dropDownList">DropDown list</li>
 				</ul>
 			</div>
 		</div>
