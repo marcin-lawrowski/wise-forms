@@ -26,5 +26,7 @@
 </script>
 
 <script id="buttonSubmitTemplate" type="text/template">
-	<input type="button" value="Submit" />
+	<div>
+		<input type="button" value="Submit" />
+	</div>
 </script>

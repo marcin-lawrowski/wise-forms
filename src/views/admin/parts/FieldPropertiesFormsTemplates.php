@@ -93,3 +93,20 @@
 		</table>
 	</div>
 </script>
+
+<script id="buttonSubmitTemplateProperties" type="text/template">
+	<div>
+		<table>
+			<tr>
+				<td colspan="2"><label for="label">Label: </label></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input id="label" type="text" name="label" class="wfFullWidth" /></td>
+			</tr>
+			<tr>
+				<td><label for="align">Align: </label></td>
+				<td><select id="align" name="align"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></td>
+			</tr>
+		</table>
+	</div>
+</script>

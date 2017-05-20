@@ -37,7 +37,7 @@
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="textInput">Text Input</li>
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="textArea">Text Area</li>
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="container2Cols">2 cols</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="paragraph">Parapgraph</li>
+					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="paragraph">Paragraph</li>
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="buttonSubmit">Submit button</li>
 				</ul>
 			</div>

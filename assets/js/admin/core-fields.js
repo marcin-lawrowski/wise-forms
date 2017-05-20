@@ -127,7 +127,23 @@ wiseforms.admin.core.Fields = [
 	{
 		type: 'buttonSubmit',
 		name: 'Button Submit',
-		templateElementId: 'buttonSubmitTemplate'
+		templateElementId: 'buttonSubmitTemplate',
+		propertiesTemplateElementId: 'buttonSubmitTemplateProperties',
+
+		renderFromProperties: function(properties, fieldInstance) {
+			fieldInstance.find('input').attr('value', properties.label);
+			fieldInstance.find('div').css('text-align', properties.align);
+		},
+
+		renderPropertiesForm: function(properties, propertiesFormInstance) {
+			propertiesFormInstance.find('*[name="label"]').val(properties.label);
+			propertiesFormInstance.find('*[name="align"]').val(properties.align);
+		},
+
+		initialProperties: {
+			label: 'Submit',
+			align: 'left'
+		}
 	}
 
 ];
