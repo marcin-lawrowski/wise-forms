@@ -113,6 +113,10 @@
     height: 200px;
 }
 
+.wfDesigner .wfDesignerFieldInstanceProperties .wfRadioButtonsType textarea {
+    height: 200px;
+}
+
 /* Form preview styles: */
 .wf2Col {
     width: 48%; float: left; display: block; min-height: 20px;

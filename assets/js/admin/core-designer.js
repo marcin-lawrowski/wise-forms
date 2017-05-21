@@ -156,11 +156,13 @@ wiseforms.admin.core.Designer = function(options) {
 			var templateElement = jQuery('#' + fieldConfiguration.templateElementId);
 
 			if (templateElement.length > 0) {
+				var uniq = 'id' + (new Date()).getTime();
 				var fieldInstance = jQuery('<li>');
 				fieldInstance.addClass('ui-state-default');
 				fieldInstance.addClass('wfFieldInstance');
 				fieldInstance.append(templateElement.html());
 				fieldInstance.data('type', type);
+				fieldInstance.data('id', uniq);
 				fieldInstance.click(onFieldInstanceClick);
 
 				// propare for any container-type fields:

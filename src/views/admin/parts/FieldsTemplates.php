@@ -43,3 +43,10 @@
 	<span class="wfFieldCheckboxesContainer"></span>
 	<br class="wfClear" />
 </script>
+
+<script id="radioButtonsTemplate" type="text/template">
+	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+	<br class="wfLabelDivider" />
+	<span class="wfFieldCheckboxesContainer"></span>
+	<br class="wfClear" />
+</script>

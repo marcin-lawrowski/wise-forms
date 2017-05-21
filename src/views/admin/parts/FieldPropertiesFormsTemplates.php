@@ -190,3 +190,38 @@
 		</table>
 	</div>
 </script>
+
+<script id="radioButtonsTemplateProperties" type="text/template">
+	<div>
+		<table>
+			<tr>
+				<td colspan="2"><label for="label">Label: </label></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input id="label" type="text" name="label" class="wfFullWidth" /></td>
+			</tr>
+			<tr>
+				<td><label for="labelWidth">Label width: </label></td>
+				<td><input type="text" id="labelWidth" name="labelWidth" style="width: 70px" placeholder="auto" />&nbsp;px</td>
+			</tr>
+			<tr>
+				<td><label>Label location: </label></td>
+				<td><label><input type="radio" name="labelLocation" value="top" />Top</label>&nbsp;&nbsp;<label><input type="radio" name="labelLocation" value="inline" />Inline</label></td>
+			</tr>
+			<tr>
+				<td><label for="labelAlign">Label align: </label></td>
+				<td><select id="labelAlign" name="labelAlign"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></td>
+			</tr>
+			<tr>
+				<td><label for="required">Required: </label></td>
+				<td><input id="required" type="checkbox" name="required" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><label for="options">Options:</label></td>
+			</tr>
+			<tr>
+				<td colspan="2"><textarea id="options" name="options" class="wfFullWidth"></textarea></td>
+			</tr>
+		</table>
+	</div>
+</script>
