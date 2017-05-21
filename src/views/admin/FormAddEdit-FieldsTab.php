@@ -34,14 +34,14 @@
 			<h4>Fields</h4>
 			<div class="wfDesignerToolBoxContent">
 				<ul>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="textInput">Text Input</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="textArea">Text Area</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="container2Cols">2 cols</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="paragraph">Paragraph</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="buttonSubmit">Submit button</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="dropDownList">DropDown list</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="checkboxes">Checkboxes list</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="radioButtons">Radio button list</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="textInput">Text Input</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="textArea">Text Area</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="container2Cols">2 cols</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="paragraph">Paragraph</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="buttonSubmit">Submit button</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="dropDownList">DropDown list</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="checkboxes">Checkboxes list</li>
+					<li class="wfDesignerFieldTemplate" data-field-template-type="radioButtons">Radio button list</li>
 				</ul>
 			</div>
 		</div>

@@ -43,6 +43,10 @@
     margin: 5px; padding: 5px; width: auto;
 }
 
+.wfDesigner ul li.ui-state-highlight {
+    border: 1px dashed #9a9a9a; height: 10px;
+}
+
 .wfDesigner .wfDesignerLeft {
     float: left; width: 250px;
 }
@@ -120,7 +124,7 @@
 /* Form preview styles: */
 .wf2Col {
     width: 48%; float: left; display: block; min-height: 20px;
-    margin: 2px; border: 1px dotted #aeaeae;
+    margin: 2px; border: 1px dashed #9a9a9a;
 }
 
 .wf2ColLast {
