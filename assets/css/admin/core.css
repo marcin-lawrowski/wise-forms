@@ -109,6 +109,10 @@
     height: 200px;
 }
 
+.wfDesigner .wfDesignerFieldInstanceProperties .wfCheckboxesType textarea {
+    height: 200px;
+}
+
 /* Form preview styles: */
 .wf2Col {
     width: 48%; float: left; display: block; min-height: 20px;
@@ -125,6 +129,10 @@
 
 .wf100RemaingWidth > input, .wf100RemaingWidth > textarea, .wf100RemaingWidth > select {
     width: 100%;
+}
+
+.wfFieldCheckboxesContainer > label > span {
+    display: inline-block; margin-right: 5px;
 }
 
 .wfWordWrap {

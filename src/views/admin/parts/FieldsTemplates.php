@@ -36,3 +36,10 @@
 	<br />
 	<span><select></select></span>
 </script>
+
+<script id="checkboxesTemplate" type="text/template">
+	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+	<br class="wfLabelDivider" />
+	<span class="wfFieldCheckboxesContainer"></span>
+	<br class="wfClear" />
+</script>

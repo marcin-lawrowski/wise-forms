@@ -268,6 +268,112 @@ wiseforms.admin.core.Fields = [
 				}
 			]
 		}
+	},
+	{
+		type: 'checkboxes',
+		name: 'Checkboxes list',
+		templateElementId: 'checkboxesTemplate',
+		propertiesTemplateElementId: 'checkboxesTemplateProperties',
+
+		renderFromProperties: function(properties, fieldInstance) {
+			// render options:
+			var totalOptions = 0;
+			if (jQuery.isArray(properties.options)) {
+				totalOptions += properties.options.length;
+
+				// create additional options:
+				for (var x = fieldInstance.find('span.wfFieldCheckboxesContainer > label').length; x < totalOptions; x++) {
+					var newOption = jQuery('<label>').append(
+						jQuery('<input>').attr('type', 'checkbox')
+					).append(
+						jQuery('<span>')
+					);
+					fieldInstance.find('span.wfFieldCheckboxesContainer').append(newOption);
+				}
+
+				// update options:
+				for (var y = 0; y < properties.options.length; y++) {
+					var theLabel = fieldInstance.find('span.wfFieldCheckboxesContainer > label').eq(y);
+					theLabel.find('input').attr('value', properties.options[y].key);
+					theLabel.find('span').text(properties.options[y].value + ' ');
+				}
+
+				// delete options:
+				for (var z = fieldInstance.find('span.wfFieldCheckboxesContainer > label').length; z > totalOptions; z--) {
+					fieldInstance.find('span.wfFieldCheckboxesContainer > label').eq(z - 1).remove();
+				}
+			} else {
+				fieldInstance.find('span.wfFieldCheckboxesContainer > label').remove();
+			}
+
+			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+
+			fieldInstance.find('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
+			fieldInstance.find('label').css('display', properties.labelWidth.length > 0 ? 'inline-block' : 'inline');
+			fieldInstance.find('label').css('text-align', properties.labelAlign);
+
+			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
+			fieldInstance.find('br.wfLabelDivider').toggleClass('wfHidden', properties.labelLocation != 'top' || properties.label.length == 0 && !properties.required);
+			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length == 0 && !properties.required);
+			fieldInstance.find('label').toggleClass('wfLeft', properties.labelLocation != 'top');
+		},
+
+		renderPropertiesForm: function(properties, propertiesFormInstance) {
+			propertiesFormInstance.find('input[name="label"]').val(properties.label);
+			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
+			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
+			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
+
+			var options = [];
+			if (jQuery.isArray(properties.options)) {
+				for (var y = 0; y < properties.options.length; y++) {
+					options.push(properties.options[y].value);
+				}
+			}
+			propertiesFormInstance.find('*[name="options"]').val(options.length > 0 ? options.join("\n") : '');
+		},
+
+		mapProperty: function(propertyName, propertyValue, fieldInstance) {
+			if (propertyName === 'options') {
+				var values = propertyValue.split("\n");
+				if (propertyValue.length > 0) {
+					propertyValue = [];
+					for (var x = 0; x < values.length; x++) {
+						propertyValue.push({
+							key: values[x],
+							value: values[x]
+						});
+					}
+				} else {
+					propertyValue = [];
+				}
+			}
+
+			return propertyValue;
+		},
+
+		initialProperties: {
+			label: 'Select:',
+			required: true,
+			labelLocation: 'top',
+			labelWidth: '',
+			labelAlign: 'left',
+			options: [
+				{
+					key: "Option 1",
+					value: "Option 1"
+				},
+				{
+					key: "Option 2",
+					value: "Option 2"
+				},
+				{
+					key: "Option 3",
+					value: "Option 3"
+				}
+			]
+		}
 	}
 
 ];

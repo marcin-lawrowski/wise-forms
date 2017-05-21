@@ -40,8 +40,8 @@
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="paragraph">Paragraph</li>
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="buttonSubmit">Submit button</li>
 					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="dropDownList">DropDown list</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="dropCheckboxes">Checkboxes list</li>
-					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="dropRadioButtons">Radio button list</li>
+					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="checkboxes">Checkboxes list</li>
+					<li class="wfDesignerFieldTemplate ui-state-highlight" data-field-template-type="radioButtons">Radio button list</li>
 				</ul>
 			</div>
 		</div>
