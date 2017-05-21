@@ -162,7 +162,7 @@ wiseforms.admin.core.Fields = [
 					placeholderOption.attr('disabled', 'disabled');
 					fieldInstance.find('select').prepend(placeholderOption);
 				}
-				placeholderOption.attr('value', properties.placeholder);
+				placeholderOption.attr('value', '');
 				placeholderOption.text(properties.placeholder);
 			} else {
 				fieldInstance.find('select > option.wfFieldPlaceholderOption').remove();
@@ -191,6 +191,8 @@ wiseforms.admin.core.Fields = [
 				for (var z = fieldInstance.find('select > option').length; z > totalOptions; z--) {
 					fieldInstance.find('select > option').eq(z - 1).remove();
 				}
+			} else {
+				fieldInstance.find('select > option:not(.wfFieldPlaceholderOption)').remove();
 			}
 
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
@@ -221,7 +223,7 @@ wiseforms.admin.core.Fields = [
 					options.push(properties.options[y].value);
 				}
 			}
-			propertiesFormInstance.find('*[name="options"]').val(options.join("\n"));
+			propertiesFormInstance.find('*[name="options"]').val(options.length > 0 ? options.join("\n") : '');
 		},
 
 		mapProperty: function(propertyName, propertyValue, fieldInstance) {

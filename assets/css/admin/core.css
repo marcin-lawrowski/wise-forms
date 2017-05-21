@@ -9,6 +9,10 @@
     color: #fff;
 }
 
+.wfAdminPage .wfTabsContentWrap section {
+    min-height: 800px;
+}
+
 /* Common styles: */
 .wfClear {
     clear: both; line-height: 0.1%; font-size: 0.1%; height: 0.1%;
