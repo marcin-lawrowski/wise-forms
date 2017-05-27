@@ -1,6 +1,6 @@
 <div class="wfCol6">
-	<?php echo $children[0]; ?>
+	<?php echo $childrenRendered[0]; ?>
 </div>
 <div class="wfCol6">
-	<?php echo $children[1]; ?>
+	<?php echo $childrenRendered[1]; ?>
 </div>

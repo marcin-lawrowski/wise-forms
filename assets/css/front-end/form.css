@@ -1,10 +1,10 @@
 /* Columns system */
-.wfRow:before {
+.wfFieldContainer2ColsContainer:before {
     display: table;
     content: " ";
 }
 
-.wfRow:after {
+.wfFieldContainer2ColsContainer:after {
     clear: both;
 }
 

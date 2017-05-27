@@ -50,17 +50,21 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 					$children[] = $this->renderFields($childrenFields);
 				}
 
-				$fieldRendered = $this->renderView('form/fields/' . ucfirst($field['type']), array(
-					'field' => $field,
-					'children' => $children
+				$fieldRendered = $this->renderView('form/fields/' . ucfirst($field['type']), array_merge(
+					array(
+						'childrenRendered' => $children,
+					),
+					$field
 				));
 			} else {
 				$fieldRendered = $this->renderView('form/fields/' . ucfirst($field['type']), $field);
 			}
 
-			$html .= $this->renderView('form/FieldBox', array(
-				'body' => $fieldRendered,
-				'field' => $field
+			$html .= $this->renderView('form/FieldBox', array_merge(
+				array(
+					'body' => $fieldRendered,
+				),
+				$field
 			));
 		}
 
