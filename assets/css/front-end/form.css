@@ -1,0 +1,14 @@
+/* Columns system */
+.wfRow:before {
+    display: table;
+    content: " ";
+}
+
+.wfRow:after {
+    clear: both;
+}
+
+.wfCol6 {
+    width: 49.99%;
+    float: left;
+}
