@@ -57,6 +57,16 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		return $this->constructUrl($data);
 	}
 
+	public function getObjectDeleteUrl($id) {
+		$data = array(
+			'id' => $id,
+			'action' => 'form-delete',
+			'nonce' => wp_create_nonce('form-delete')
+		);
+
+		return $this->constructUrl($data);
+	}
+
 	public function getObjectAddUrl() {
 		$data = array(
 			'action' => 'form-save',
@@ -81,11 +91,66 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 
 		if ($form !== null) {
 			$form->setName($this->getPostParam('name'));
-			$form->setFields($this->getPostParam('fields'));
+			$form->setFields($this->fillFieldsIDs($this->getPostParam('fields')));
 			$this->formsDao->save($form);
 
 			$this->addMessage('Form has been saved.');
 			$this->redirect($this->getEditUrl($form->getId()));
+		} else {
+			$this->addErrorMessage('Form does not exist.');
+			$this->redirect($this->getIndexPageUrl());
+		}
+	}
+
+	private function fillFieldsIDs($fieldsJSON) {
+		$fields = json_decode($fieldsJSON, true);
+		if (!is_array($fields)) {
+			return $fieldsJSON;
+		}
+
+		$fields = $this->fillFieldsCollectionIDs($fields);
+
+
+		return json_encode($fields);
+	}
+
+	private function fillFieldsCollectionIDs($fields) {
+		foreach ($fields as $key => $field) {
+			if (!is_array($field)) {
+				continue;
+			}
+
+			// create and insert ID if it does not exist:
+			if (!array_key_exists('id', $field)) {
+				$id = 'wfField_'.sha1(microtime(true).rand(0, 100000).rand(100000, 500000));
+				$fields[$key]['id'] = $id;
+			}
+
+			// iterate over container fields:
+			if (array_key_exists('children', $field)) {
+				$children = array();
+				foreach ($field['children'] as $childrenFields) {
+					$children[] = $this->fillFieldsCollectionIDs($childrenFields);
+				}
+				$fields[$key]['children'] = $children;
+			}
+		}
+
+		return $fields;
+	}
+
+	protected function formDeleteAction() {
+		$id = intval($this->getParam('id'));
+
+		if (!$this->verfiyNonce('form-delete')) {
+			$this->addErrorMessage('Invalid form.');
+			$this->redirect($this->getIndexPageUrl());
+		}
+
+		$result = $this->formsDao->deleteById($id);
+		if ($result) {
+			$this->addMessage('Form has been deleted.');
+			$this->redirect($this->getIndexPageUrl());
 		} else {
 			$this->addErrorMessage('Form does not exist.');
 			$this->redirect($this->getIndexPageUrl());

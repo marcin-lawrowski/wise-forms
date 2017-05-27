@@ -33,9 +33,11 @@
 									</div>
 
 									<div id="major-publishing-actions">
-										<div id="delete-action">
-											<a class="submitdelete deletion" href="#">Delete</a>
-										</div>
+										<?php if ($form->getId() > 0) { ?>
+											<div id="delete-action">
+												<a class="submitdelete deletion" href="<?php echo $this->getObjectDeleteUrl($form->getId()); ?>" onclick="return confirm('Are you sure you want to delete the form?')">Delete</a>
+											</div>
+										<?php } ?>
 
 										<div id="publishing-action">
 											<input name="save" type="submit" class="button button-primary button-large" value="<?php echo $form->getId() > 0 ? 'Update' : 'Save'; ?>">

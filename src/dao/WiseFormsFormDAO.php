@@ -85,6 +85,21 @@ class WiseFormsFormDAO {
 	}
 
 	/**
+	 * Deletes form by ID.
+	 *
+	 * @param integer $id
+	 *
+	 * @return boolean
+	 */
+	public function deleteById($id) {
+		global $wpdb;
+
+		$result = $wpdb->delete($this->installer->getFormsTable(), array('id' => $id), array('%d'));
+
+		return $result !== false ? true : false;
+	}
+
+	/**
 	 * Returns all for given page.
 	 *
 	 * @param integer $pageNumber Pagination page number
