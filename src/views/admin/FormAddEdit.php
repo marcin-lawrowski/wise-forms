@@ -61,15 +61,15 @@
 						</ul>
 					</nav>
 					<div class="wfTabsContentWrap">
-						<section id="wf-tab-base">
+						<section id="wf-tab-base-section">
 							<?php include('FormAddEdit-HomeTab.php'); ?>
 						</section>
-						<section id="wf-tab-fields">
+						<section id="wf-tab-fields-section">
 							<?php include('FormAddEdit-FieldsTab.php'); ?>
 						</section>
-						<section id="wf-tab-messages"><p>3</p></section>
-						<section id="wf-tab-target"><p>4</p></section>
-						<section id="wf-tab-advanced"><p>5</p></section>
+						<section id="wf-tab-messages-section"><p>3</p></section>
+						<section id="wf-tab-target-section"><p>4</p></section>
+						<section id="wf-tab-advanced-section"><p>5</p></section>
 					</div>
 				</div>
 			</form>

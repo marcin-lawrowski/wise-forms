@@ -1,3 +1,4 @@
 <h1><?php echo $form->getName(); ?></h1>
-
-<?php echo $fieldsRendered; ?>
+<form class="wfForm">
+	<?php echo $fieldsRendered; ?>
+</form>

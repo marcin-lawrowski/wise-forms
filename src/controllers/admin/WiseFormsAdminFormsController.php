@@ -35,8 +35,12 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		$data = array(
 			'id' => $id
 		);
+		$url = $this->constructUrl($data);
+		if ($this->hasPostParam('tab')) {
+			$url .= '#'.$this->getPostParam('tab');
+		}
 
-		return $this->constructUrl($data);
+		return $url;
 	}
 
 	public function getNewUrl() {
