@@ -1,3 +1,8 @@
+/* Common */
+.wfForm .wfLeft {
+    float: left;
+}
+
 /* Columns system */
 .wfFieldContainer2ColsContainer:before {
     display: table;
@@ -11,4 +16,41 @@
 .wfCol6 {
     width: 49.99%;
     float: left;
+}
+
+/* Fields */
+.wfForm .wfFieldContainer {
+    margin: 0 0 10px 0;
+}
+
+.wfForm .wfFieldContainer label.wfFieldLabel {
+    display: block; margin: 0 3px 3px 0;
+}
+
+.wfForm .wfFieldContainer input.wfFieldInput {
+    display: block; width: auto; margin: 0; box-sizing: border-box;
+}
+
+.wfForm .wfFieldContainer input.wfWidth100, .wfForm .wfFieldContainer span.wfWidth100 {
+    width: 100%;
+}
+
+.wfForm .wfFieldContainer .wfTable {
+    display: table; width: 100%; table-layout: fixed;
+}
+
+.wfForm .wfFieldContainer label.wfCell, .wfForm .wfFieldContainer span.wfCell {
+    display: table-cell; vertical-align: middle;
+}
+
+.wfForm .wfFieldContainer label.wfFieldLabelAlignRight {
+    text-align: right;
+}
+
+.wfForm .wfFieldContainer label.wfFieldLabelAlignLeft {
+    text-align: left;
+}
+
+.wfForm .wfFieldContainer label.wfFieldLabelAlignCenter {
+    text-align: center;
 }

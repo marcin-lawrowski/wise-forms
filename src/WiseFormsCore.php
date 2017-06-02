@@ -11,7 +11,8 @@ class WiseFormsCore {
 	 * @var string[] JS files.
 	 */
 	private $jsAssets = array(
-
+		'form.js',
+		'core.js'
 	);
 
 	/**
