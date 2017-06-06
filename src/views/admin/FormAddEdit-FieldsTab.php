@@ -11,17 +11,17 @@
 	}
 ?>
 
-<input type="hidden" id="fields" name="fields" value="<?php echo $fields; ?>" />
+<input type="hidden" id="fields" name="fields" value="<?php echo htmlentities($fields, ENT_QUOTES, 'UTF-8'); ?>" />
 
 <script>
 	jQuery(window).load(function() {
-		var savedConfigJSON = '<?php echo $fields; ?>';
+		var savedConfigJSON = <?php echo $fields; ?>;
 		jQuery("ul, li").disableSelection();
 
 		var options = {
 			container: jQuery('.wfDesigner'),
 			formElement: jQuery('.wfFormAddEdit'),
-			fields: JSON.parse(savedConfigJSON)
+			fields: savedConfigJSON
 		};
 
 		new wiseforms.admin.core.Designer(options);

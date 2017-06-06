@@ -113,7 +113,7 @@ wiseforms.admin.core.Fields = [
 		propertiesTemplateElementId: 'paragraphTemplateProperties',
 
 		renderFromProperties: function(properties, fieldInstance) {
-			fieldInstance.find('p').text(properties.text);
+			fieldInstance.find('p').html(typeof properties.text !== 'undefined' ? properties.text.replace(/\n/, '<br />') : '');
 		},
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
