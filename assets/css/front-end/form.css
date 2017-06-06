@@ -43,14 +43,14 @@
     display: table-cell; vertical-align: middle;
 }
 
-.wfForm .wfFieldContainer label.wfFieldLabelAlignRight {
+.wfForm .wfFieldContainer label.wfFieldLabelAlignRight, .wfForm .wfFieldContainer .wfFieldTextAlignRight {
     text-align: right;
 }
 
-.wfForm .wfFieldContainer label.wfFieldLabelAlignLeft {
+.wfForm .wfFieldContainer label.wfFieldLabelAlignLeft, .wfForm .wfFieldContainer .wfFieldTextAlignLeft {
     text-align: left;
 }
 
-.wfForm .wfFieldContainer label.wfFieldLabelAlignCenter {
+.wfForm .wfFieldContainer label.wfFieldLabelAlignCenter, .wfForm .wfFieldContainer .wfFieldTextAlignCenter {
     text-align: center;
 }
