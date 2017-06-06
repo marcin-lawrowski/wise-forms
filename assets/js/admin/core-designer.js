@@ -52,61 +52,81 @@ wiseforms.admin.core.Designer = function(options) {
 		var propertiesContainer = container.find('.wfDesignerFieldInstanceProperties');
 
 		var fieldConfiguration = getFieldConfigurationByType(fieldType);
-		if (fieldConfiguration != null && typeof fieldConfiguration.propertiesTemplateElementId !== 'undefined') {
-			var templateElement = jQuery('#' + fieldConfiguration.propertiesTemplateElementId);
-
-			// render properties form:
-			propertiesContainer.find('.wfDesignerToolBoxContent').addClass('wf' + fieldTypeUppercase + 'Type').html(templateElement.html());
+		if (fieldConfiguration != null) {
+			propertiesContainer.find('.wfDesignerToolBoxContent').addClass('wf' + fieldTypeUppercase + 'Type').empty();
 			propertiesContainer.find('h4').text(fieldConfiguration.name + ' Properties');
 			propertiesContainer.show();
 
-			function storeValueAndRender(propertyName, propertyValue, fieldInstance) {
-				var currentProperties = getCurrentProperties(fieldInstance);
+			if (typeof fieldConfiguration.propertiesTemplateElementId !== 'undefined') {
+				var templateElement = jQuery('#' + fieldConfiguration.propertiesTemplateElementId);
 
-				// map property:
-				if (typeof fieldConfiguration.mapProperty !== 'undefined') {
-					propertyValue = fieldConfiguration.mapProperty(propertyName, propertyValue, fieldInstance);
+				// render properties form:
+				propertiesContainer.find('.wfDesignerToolBoxContent').html(templateElement.html());
+
+				function storeValueAndRender(propertyName, propertyValue, fieldInstance) {
+					var currentProperties = getCurrentProperties(fieldInstance);
+
+					// map property:
+					if (typeof fieldConfiguration.mapProperty !== 'undefined') {
+						propertyValue = fieldConfiguration.mapProperty(propertyName, propertyValue, fieldInstance);
+					}
+
+					currentProperties[propertyName] = propertyValue;
+					fieldInstance.data('properties', jQuery.extend(true, {}, currentProperties));
+
+					// refresh the instance of the field:
+					if (typeof fieldConfiguration.renderFromProperties !== 'undefined') {
+						fieldConfiguration.renderFromProperties(currentProperties, fieldInstance);
+					}
+
 				}
 
-				currentProperties[propertyName] = propertyValue;
-				fieldInstance.data('properties', jQuery.extend(true, {}, currentProperties));
+				// text property:
+				propertiesContainer.find('input[type="text"], textarea').keyup(function (e) {
+					var element = jQuery(event.target);
+					storeValueAndRender(element.attr('name'), element.val(), fieldInstance);
+				});
 
-				// refresh the instance of the field:
-				if (typeof fieldConfiguration.renderFromProperties !== 'undefined') {
-					fieldConfiguration.renderFromProperties(currentProperties, fieldInstance);
+				// checkbox property:
+				propertiesContainer.find('input[type="checkbox"]').change(function (e) {
+					var element = jQuery(event.target);
+					storeValueAndRender(element.attr('name'), element.is(':checked'), fieldInstance);
+				});
+
+				// radio property:
+				propertiesContainer.find('input[type="radio"]').change(function (e) {
+					var element = jQuery(event.target);
+					var name = element.attr('name');
+					storeValueAndRender(name, propertiesContainer.find('input[name="' + name + '"]').filter(':checked').val(), fieldInstance);
+				});
+
+				// select property:
+				propertiesContainer.find('select').change(function (e) {
+					var element = jQuery(event.target);
+					storeValueAndRender(element.attr('name'), element.val(), fieldInstance);
+				});
+
+				// render properties form on click:
+				if (typeof fieldConfiguration.renderPropertiesForm !== 'undefined') {
+					fieldConfiguration.renderPropertiesForm(getCurrentProperties(fieldInstance), propertiesContainer);
 				}
-
 			}
 
-			// text property:
-			propertiesContainer.find('input[type="text"], textarea').keyup(function(e) {
-				var element = jQuery(event.target);
-				storeValueAndRender(element.attr('name'), element.val(), fieldInstance);
+			// field delete button:
+			var deleteButton = jQuery('<input>')
+				.attr('type', 'button')
+				.attr('value', 'Delete field')
+				.addClass('button button-large')
+			;
+			propertiesContainer.find('.wfDesignerToolBoxContent').append('<br />').append(deleteButton);
+			deleteButton.click(function(e) {
+				e.preventDefault();
+				if (confirm('Are you sure you want to delete this field?')) {
+					fieldInstance.remove();
+					propertiesContainer.hide();
+					propertiesContainer.find('.wfDesignerToolBoxContent').empty();
+				}
 			});
-
-			// checkbox property:
-			propertiesContainer.find('input[type="checkbox"]').change(function(e) {
-				var element = jQuery(event.target);
-				storeValueAndRender(element.attr('name'), element.is(':checked'), fieldInstance);
-			});
-
-			// radio property:
-			propertiesContainer.find('input[type="radio"]').change(function(e) {
-				var element = jQuery(event.target);
-				var name = element.attr('name');
-				storeValueAndRender(name, propertiesContainer.find('input[name="' + name + '"]').filter(':checked').val(), fieldInstance);
-			});
-
-			// select property:
-			propertiesContainer.find('select').change(function(e) {
-				var element = jQuery(event.target);
-				storeValueAndRender(element.attr('name'), element.val(), fieldInstance);
-			});
-
-			// render properties form on click:
-			if (typeof fieldConfiguration.renderPropertiesForm !== 'undefined') {
-				fieldConfiguration.renderPropertiesForm(getCurrentProperties(fieldInstance), propertiesContainer);
-			}
 
 		} else {
 			propertiesContainer.hide();
