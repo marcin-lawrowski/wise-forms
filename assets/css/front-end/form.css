@@ -27,11 +27,11 @@
     display: block; margin: 0 3px 3px 0;
 }
 
-.wfForm .wfFieldContainer input.wfFieldInput {
+.wfForm .wfFieldContainer input.wfFieldInput, .wfForm .wfFieldContainer textarea.wfTextArea {
     display: block; width: auto; margin: 0; box-sizing: border-box;
 }
 
-.wfForm .wfFieldContainer input.wfWidth100, .wfForm .wfFieldContainer span.wfWidth100 {
+.wfForm .wfFieldContainer input.wfWidth100, .wfForm .wfFieldContainer span.wfWidth100, .wfForm .wfFieldContainer textarea.wfWidth100 {
     width: 100%;
 }
 
