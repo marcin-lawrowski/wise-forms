@@ -54,3 +54,11 @@
 .wfForm .wfFieldContainer label.wfFieldLabelAlignCenter, .wfForm .wfFieldContainer .wfFieldTextAlignCenter {
     text-align: center;
 }
+
+.wfForm .wfFieldContainer label.wfCheckboxesLabel {
+    display: inline-block; margin: 0; margin-right: 10px;
+}
+
+.wfForm .wfFieldContainer input.wfCheckboxes {
+    display: inline-block; width: auto; margin: 0; box-sizing: border-box; margin-right: 2px;
+}
