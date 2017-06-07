@@ -49,7 +49,7 @@ class WiseFormsCore {
 		add_action('admin_menu', array($this, 'initAdminMenu'));
 
 		// register shortcodes:
-		add_shortcode('wise-forms', array(WiseFormsContainer::get('shortcodes/WiseFormsFormShortcode'), 'render'));
+		add_shortcode('wise-forms', array(WiseFormsContainer::get('shortcodes/form/WiseFormsFormShortcode'), 'render'));
 	}
 
 	public function initAdminMenu() {

@@ -103,7 +103,7 @@ abstract class WiseFormsShortcode {
 	 * @throws \Exception
 	 */
 	protected function renderView($name, $data) {
-		$path = realpath(dirname(__FILE__)).'/templates/'.$name.'.php';
+		$path = realpath(dirname(__FILE__)).'/'.$name.'.php';
 		if (!file_exists($path)) {
 			throw new \Exception("View $name does not exist.");
 		}

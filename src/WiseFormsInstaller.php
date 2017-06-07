@@ -13,6 +13,12 @@ class WiseFormsInstaller {
 		return $wpdb->prefix.'wise_forms';
 	}
 
+	public static function getResultsTable() {
+		global $wpdb;
+
+		return $wpdb->prefix.'wise_forms_results';
+	}
+
 	/**
 	 * Plugin's activation action. Creates database structure (if does not exist), upgrades database structure and
 	 * initializes options.
@@ -37,6 +43,18 @@ class WiseFormsInstaller {
 				id bigint(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				name text NOT NULL,
 				fields text,
+				created bigint(11) DEFAULT '0' NOT NULL
+		) DEFAULT CHARSET=utf8;";
+		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+		dbDelta($sql);
+
+		$tableName = self::getResultsTable();
+		$sql = "CREATE TABLE ".$tableName." (
+				id bigint(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+				form_name text NOT NULL,
+				form_id bigint(11) NOT NULL,
+				result text,
+				ip text,
 				created bigint(11) DEFAULT '0' NOT NULL
 		) DEFAULT CHARSET=utf8;";
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -74,6 +92,10 @@ class WiseFormsInstaller {
 		global $wpdb;
 		
 		$tableName = self::getFormsTable();
+		$sql = "DROP TABLE IF EXISTS {$tableName};";
+		$wpdb->query($sql);
+
+		$tableName = self::getResultsTable();
 		$sql = "DROP TABLE IF EXISTS {$tableName};";
 		$wpdb->query($sql);
 		
