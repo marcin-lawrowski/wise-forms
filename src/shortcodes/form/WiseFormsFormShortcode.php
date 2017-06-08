@@ -13,6 +13,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	private $formsDao;
 
 	public function __construct() {
+		WiseFormsContainer::load('shortcodes/form/fields-processing/WiseFormsFieldProcessor');
 		$this->formsDao = WiseFormsContainer::get('dao/WiseFormsFormDAO');
 	}
 
@@ -85,7 +86,16 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		$fields = $this->collectFlatFields(json_decode($form->getFields(), true));
 
 		foreach ($fields as $field) {
+			$processorClassName = 'WiseForms'.ucfirst($field['type']).'Processor';
 
+			/** @var WiseFormsFieldProcessor $processor */
+			$processor = WiseFormsContainer::get('shortcodes/form/fields-processing/'.$processorClassName);
+
+			if ($processor->isValueProvider()) {
+				$value = $processor->getPostedValue($field);
+
+				// TODO
+			}
 		}
 	}
 
