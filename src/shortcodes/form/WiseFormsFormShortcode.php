@@ -12,9 +12,15 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	 */
 	private $formsDao;
 
+	/**
+	 * @var WiseFormsResultDAO
+	 */
+	private $resultsDao;
+
 	public function __construct() {
 		WiseFormsContainer::load('shortcodes/form/fields-processing/WiseFormsFieldProcessor');
 		$this->formsDao = WiseFormsContainer::get('dao/WiseFormsFormDAO');
+		$this->resultsDao = WiseFormsContainer::get('dao/WiseFormsResultDAO');
 	}
 
 	public function render($attributes) {
@@ -85,6 +91,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	private function processForm($form) {
 		$fields = $this->collectFlatFields(json_decode($form->getFields(), true));
 
+		$result = array();
 		foreach ($fields as $field) {
 			$processorClassName = 'WiseForms'.ucfirst($field['type']).'Processor';
 
@@ -94,9 +101,23 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 			if ($processor->isValueProvider()) {
 				$value = $processor->getPostedValue($field);
 
-				// TODO
+				$result[] = array(
+					'id' => $field['id'],
+					'type' => $field['type'],
+					'value' => $value
+				);
 			}
 		}
+
+		// store the result
+		WiseFormsContainer::load('models/WiseFormsResult');
+		$resultObject = new WiseFormsResult();
+		$resultObject->setCreated(time());
+		$resultObject->setIp($_SERVER['REMOTE_ADDR']);
+		$resultObject->setResult(json_encode($result));
+		$resultObject->setFormId($form->getId());
+		$resultObject->setFormName($form->getName());
+		$this->resultsDao->save($resultObject);
 	}
 
 	/**
