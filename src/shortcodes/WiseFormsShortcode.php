@@ -1,11 +1,12 @@
 <?php
 
 /**
- * WiseForms root shortcode.
+ * WiseForms root shortcode class.
  *
  * @author Kainex <contact@kaine.pl>
  */
 abstract class WiseFormsShortcode {
+
 	protected function getCurrentApplicationPath() {
 		return strtok($_SERVER["REQUEST_URI"], '?');
 	}
@@ -51,14 +52,32 @@ abstract class WiseFormsShortcode {
 		return array_key_exists($paramName, $_POST);
 	}
 
+	/**
+	 * Sets session value.
+	 *
+	 * @param string $parameter
+	 * @param mixed $value
+	 */
 	protected function setSessionParameter($parameter, $value) {
 		$_SESSION[$parameter] = $value;
 	}
 
+	/**
+	 * Clears session value.
+	 *
+	 * @param string $parameter
+	 */
 	protected function cleanSessionParameter($parameter) {
 		unset($_SESSION[$parameter]);
 	}
 
+	/**
+	 * Returns session value.
+	 *
+	 * @param string $parameter
+	 * @param bool $encode If the result should be HTML encoded
+	 * @return null|string
+	 */
 	protected function getSessionParameter($parameter, $encode = true) {
 		if (array_key_exists($parameter, $_SESSION)) {
 			if ($encode) {
@@ -71,6 +90,11 @@ abstract class WiseFormsShortcode {
 		return null;
 	}
 
+	/**
+	 * Redirects to specific URL (server side or client side).
+	 *
+	 * @param string $url
+	 */
 	protected function redirect($url) {
 		if (!headers_sent()) {
 			header("HTTP/1.1 301 Moved Permanently");

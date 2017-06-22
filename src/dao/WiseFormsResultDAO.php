@@ -115,7 +115,7 @@ class WiseFormsResultDAO {
 		global $wpdb;
 
 		$offset = ($pageNumber - 1) * $this->limit;
-		$sql = sprintf("SELECT * FROM %s ORDER BY id ASC LIMIT %d OFFSET %d;", $this->installer->getResultsTable(), $this->limit, $offset);
+		$sql = sprintf("SELECT * FROM %s ORDER BY id DESC LIMIT %d OFFSET %d;", $this->installer->getResultsTable(), $this->limit, $offset);
 		$rows = $wpdb->get_results($sql);
 
 		return $this->populateMultiData($rows);

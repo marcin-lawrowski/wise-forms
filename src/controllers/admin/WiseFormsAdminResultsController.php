@@ -120,7 +120,7 @@ class WiseFormsAdminResultsController extends WiseFormsController {
 	}
 
 	protected function getFieldResultName($fieldResult, $flatFields) {
-		$unknownLabel = '[undefined field]';
+		$unknownLabel = '[unknown field]';
 		if (!is_array($fieldResult)) {
 			return $unknownLabel;
 		}

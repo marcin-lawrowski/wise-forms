@@ -19,7 +19,8 @@
 		<thead>
 		<tr>
 			<th scope="col" width="40"><span>ID</span></th>
-			<th scope="col"><span>Form name</span></th>
+			<th scope="col"><span>Form</span></th>
+			<th scope="col"><span>Submitted</span></th>
 			<th scope="col" width="110"></th>
 		</thead>
 
@@ -28,6 +29,7 @@
 				<tr>
 					<td><?php echo $object->getId(); ?></td>
 					<td><a href="<?php echo $this->getEditUrl($object->getId()); ?>"><?php echo $object->getFormName(); ?></a></td>
+					<td><?php echo date('Y-m-d H:i:s', $object->getCreated()); ?></td>
 					<td>
 						<a href="<?php echo $this->getEditUrl($object->getId()); ?>" class="button button-small">View</a>
 
@@ -38,7 +40,7 @@
 
 			<?php if (count($objects) === 0) { ?>
 				<tr>
-					<td colspan="3">No results found</td>
+					<td colspan="4">No results found</td>
 				</tr>
 			<?php } ?>
 		</tbody>

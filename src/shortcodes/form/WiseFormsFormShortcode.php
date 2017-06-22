@@ -1,7 +1,7 @@
 <?php
 
 /**
- * WiseForms forms shortcode.
+ * WiseForms form shortcode.
  *
  * @author Kainex <contact@kaine.pl>
  */
@@ -25,12 +25,12 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 
 	public function render($attributes) {
 		if (!is_array($attributes) || !array_key_exists('id', $attributes)) {
-			return '';
+			return '<!-- Wise Forms: not "id" parameter specified -->';
 		}
 
 		$form = $this->formsDao->getById(intval($attributes['id']));
 		if ($form === null) {
-			return '';
+			return '<!-- Wise Forms: form does not exist -->';;
 		}
 
 		// process form sending:
@@ -38,15 +38,17 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 			$this->processForm($form);
 		}
 
+		$fieldsConfiguration = json_decode($form->getFields(), true);
+
 		return $this->renderView('form/templates/FormShortcode', array(
 			'form' => $form,
-			'fieldsRendered' => $this->renderFields(json_decode($form->getFields(), true))
+			'fieldsRendered' => $this->renderFields($fieldsConfiguration)
 		));
 	}
 
 	private function renderFields($fields) {
 		if (!is_array($fields)) {
-			return '';
+			return '<!-- Wise Forms: fields configuration is broken -->';
 		}
 
 		$html = '';
