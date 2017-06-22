@@ -30,4 +30,21 @@ class WiseFormsCheckboxesProcessor extends WiseFormsFieldProcessor {
 		return $out;
 	}
 
+	/**
+	 * @param array $fieldResult
+	 *
+	 * @return string|null
+	 */
+	public function getValueFromFieldResult($fieldResult) {
+		if (array_key_exists('value', $fieldResult)) {
+			if (is_array($fieldResult['value'])) {
+				return implode(', ', $fieldResult['value']);
+			}
+
+			return '';
+		}
+
+		return null;
+	}
+
 }

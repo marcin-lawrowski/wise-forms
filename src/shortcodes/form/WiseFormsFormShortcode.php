@@ -18,7 +18,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	private $resultsDao;
 
 	public function __construct() {
-		WiseFormsContainer::load('shortcodes/form/fields-processing/WiseFormsFieldProcessor');
+		WiseFormsContainer::load('fields/WiseFormsFieldsUtils');
 		$this->formsDao = WiseFormsContainer::get('dao/WiseFormsFormDAO');
 		$this->resultsDao = WiseFormsContainer::get('dao/WiseFormsResultDAO');
 	}
@@ -89,20 +89,21 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	 * @param WiseFormsForm $form
 	 */
 	private function processForm($form) {
-		$fields = $this->collectFlatFields(json_decode($form->getFields(), true));
+		$fields = WiseFormsFieldsUtils::getFlatFieldsArray($form);
 
 		$result = array();
 		foreach ($fields as $field) {
 			$processorClassName = 'WiseForms'.ucfirst($field['type']).'Processor';
 
 			/** @var WiseFormsFieldProcessor $processor */
-			$processor = WiseFormsContainer::get('shortcodes/form/fields-processing/'.$processorClassName);
+			$processor = WiseFormsContainer::get('fields/processing/'.$processorClassName);
 
 			if ($processor->isValueProvider()) {
 				$value = $processor->getPostedValue($field);
 
 				$result[] = array(
 					'id' => $field['id'],
+					'name' => $field['label'],
 					'type' => $field['type'],
 					'value' => $value
 				);
@@ -118,35 +119,6 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		$resultObject->setFormId($form->getId());
 		$resultObject->setFormName($form->getName());
 		$this->resultsDao->save($resultObject);
-	}
-
-	/**
-	 * Returns fields as a flat array.
-	 *
-	 * @param array $fields
-	 * @return array
-	 */
-	private function collectFlatFields($fields) {
-		if (!is_array($fields)) {
-			return array();
-		}
-
-		$out = array();
-		foreach ($fields as $field) {
-			if (!is_array($field)) {
-				continue;
-			}
-
-			if (array_key_exists('children', $field)) {
-				foreach ($field['children'] as $childrenFields) {
-					$out = array_merge($out, $this->collectFlatFields($childrenFields));
-				}
-			} else {
-				$out[] = $field;
-			}
-		}
-
-		return $out;
 	}
 
 }

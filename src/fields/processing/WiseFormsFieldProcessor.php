@@ -21,6 +21,19 @@ abstract class WiseFormsFieldProcessor {
 	}
 
 	/**
+	 * @param array $fieldResult
+	 *
+	 * @return mixed|null
+	 */
+	public function getValueFromFieldResult($fieldResult) {
+		if (array_key_exists('value', $fieldResult)) {
+			return $fieldResult['value'];
+		}
+
+		return null;
+	}
+
+	/**
 	 * @return boolean
 	 */
 	public function isValueProvider() {

@@ -43,6 +43,7 @@ class WiseFormsCore {
 	public function init() {
 		WiseFormsContainer::load('controllers/WiseFormsController');
 		WiseFormsContainer::load('shortcodes/WiseFormsShortcode');
+		WiseFormsContainer::load('fields/processing/WiseFormsFieldProcessor');
 
 		add_action('wp_enqueue_scripts', array($this, 'enqueueAssets'), 11);
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAdminAssets'), 11);
@@ -56,6 +57,7 @@ class WiseFormsCore {
 		add_menu_page('Wise Forms', 'Wise Forms', 'manage_options', 'wise-forms-dashboard', '', 'dashicons-feedback');
 		add_submenu_page('wise-forms-dashboard', 'Dashboard', 'Dashboard', 'manage_options', 'wise-forms-dashboard', array($this, 'adminDashboardAction'));
 		add_submenu_page('wise-forms-dashboard', 'Forms', 'Forms', 'manage_options', 'wise-forms-forms', array($this, 'adminFormsAction'));
+		add_submenu_page('wise-forms-dashboard', 'Results', 'Results', 'manage_options', 'wise-forms-results', array($this, 'adminResultsAction'));
 	}
 
 	public function adminDashboardAction() {
@@ -64,6 +66,10 @@ class WiseFormsCore {
 
 	public function adminFormsAction() {
 		WiseFormsContainer::get('controllers/admin/WiseFormsAdminFormsController')->execute();
+	}
+
+	public function adminResultsAction() {
+		WiseFormsContainer::get('controllers/admin/WiseFormsAdminResultsController')->execute();
 	}
 
 	public function enqueueAdminAssets() {
