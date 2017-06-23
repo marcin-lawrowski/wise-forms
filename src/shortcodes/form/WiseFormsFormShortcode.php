@@ -35,9 +35,13 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 
 		// process form sending:
 		$submitted = false;
+		$errors = array();
 		if ($this->hasPostParam('wfSendForm')) {
-			$this->processForm($form);
-			$submitted = true;
+			$errors = $this->validateForm($form);
+			if (count($errors) === 0) {
+				$this->processForm($form);
+				$submitted = true;
+			}
 		}
 
 		$fieldsConfiguration = json_decode($form->getFields(), true);
@@ -45,11 +49,12 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		return $this->renderView('form/templates/FormShortcode', array(
 			'form' => $form,
 			'submitted' => $submitted,
-			'fieldsRendered' => $this->renderFields($fieldsConfiguration)
+			'hasErrors' => count($errors) > 0,
+			'fieldsRendered' => $this->renderFields($fieldsConfiguration, $errors)
 		));
 	}
 
-	private function renderFields($fields) {
+	private function renderFields($fields, $errors) {
 		if (!is_array($fields)) {
 			return '<!-- Wise Forms: fields configuration is broken -->';
 		}
@@ -64,7 +69,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 			if (array_key_exists('children', $field)) {
 				$children = array();
 				foreach ($field['children'] as $childrenFields) {
-					$children[] = $this->renderFields($childrenFields);
+					$children[] = $this->renderFields($childrenFields, $errors);
 				}
 
 				$fieldRendered = $this->renderView('form/templates/fields/' . ucfirst($field['type']), array_merge(
@@ -77,15 +82,47 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 				$fieldRendered = $this->renderView('form/templates/fields/' . ucfirst($field['type']), $field);
 			}
 
+			$fieldErrors = array_key_exists($field['id'], $errors) ? $errors[$field['id']] : array();
 			$html .= $this->renderView('form/templates/FieldBox', array_merge(
 				array(
 					'body' => $fieldRendered,
+					'errors' => $fieldErrors,
+					'hasErrors' => count($fieldErrors) > 0,
 				),
 				$field
 			));
 		}
 
 		return $html;
+	}
+
+	/**
+	 * Validates the result.
+	 *
+	 * @param WiseFormsForm $form
+	 *
+	 * @return array
+	 */
+	private function validateForm($form) {
+		$errors = array();
+		$fields = WiseFormsFieldsUtils::getFlatFieldsArray($form);
+
+		$result = array();
+		foreach ($fields as $field) {
+			$processorClassName = 'WiseForms'.ucfirst($field['type']).'Processor';
+
+			/** @var WiseFormsFieldProcessor $processor */
+			$processor = WiseFormsContainer::get('fields/processing/'.$processorClassName);
+
+			if ($processor->isValueProvider()) {
+				$fieldErrors = $processor->validatePostedValue($form, $field);
+				if (count($fieldErrors) > 0) {
+					$errors[$field['id']] = $fieldErrors;
+				}
+			}
+		}
+
+		return $errors;
 	}
 
 	/**

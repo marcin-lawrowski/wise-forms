@@ -12,7 +12,6 @@
 		<textarea id="<?php echo $id; ?>"
 				name="<?php echo $id; ?>"
 				style="<?php if (strlen($height) > 0) { ?>height: <?php echo $height; ?>px<?php } ?>"
-				<?php if ($required) { ?>required<?php } ?>
 				placeholder="<?php echo htmlentities($placeholder, ENT_QUOTES, 'UTF-8'); ?>"
 				class="wfTextArea<?php if ($width == '100%') { ?> wfWidth100<?php } ?>"
 		></textarea>

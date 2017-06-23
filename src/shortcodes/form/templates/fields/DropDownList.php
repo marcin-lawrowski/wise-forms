@@ -11,7 +11,6 @@
 	<span class="<?php if ($labelLocation == 'inline') { ?>wfCell<?php } ?><?php if ($width == '100%') { ?> wfWidth100<?php } ?>">
 		<select id="<?php echo $id; ?>"
 			   name="<?php echo $id; ?>"
-			   <?php if ($required) { ?>required<?php } ?>
 			   class="wfDropDownList<?php if ($width == '100%') { ?> wfWidth100<?php } ?>"
 		>
 			<?php if (strlen($placeholder) > 0) { ?>

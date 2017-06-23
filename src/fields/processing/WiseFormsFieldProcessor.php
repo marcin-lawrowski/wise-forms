@@ -21,6 +21,35 @@ abstract class WiseFormsFieldProcessor {
 	}
 
 	/**
+	 * Validate field and returns errors if there are any.
+	 *
+	 * @param WiseFormsForm $form
+	 * @param array $field
+	 *
+	 * @return array Array of errors
+	 */
+	public function validatePostedValue($form, $field) {
+		return array();
+	}
+
+	/**
+	 * Validate required string field and returns errors if there are any.
+	 *
+	 * @param WiseFormsForm $form
+	 * @param array $field
+	 *
+	 * @return array Array of errors
+	 */
+	protected function validateRequiredStringField($form, $field) {
+		$postedValue = $this->getPostedValue($field);
+		if ($field['required'] === true && strlen($postedValue) === 0) {
+			return array($form->getMessage('validation.error.required'));
+		}
+
+		return array();
+	}
+
+	/**
 	 * @param array $fieldResult
 	 *
 	 * @return mixed|null

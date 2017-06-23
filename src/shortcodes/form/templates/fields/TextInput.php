@@ -12,7 +12,6 @@
 		<input id="<?php echo $id; ?>"
 			   name="<?php echo $id; ?>"
 			   type="text"
-			   <?php if ($required) { ?>required<?php } ?>
 			   placeholder="<?php echo htmlentities($placeholder, ENT_QUOTES, 'UTF-8'); ?>"
 			   class="wfFieldInput<?php if ($width == '100%') { ?> wfWidth100<?php } ?>"
 		/>

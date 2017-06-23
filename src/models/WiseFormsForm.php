@@ -35,7 +35,11 @@ class WiseFormsForm {
 	 * @var array
 	 */
 	public static $defaultMessages = array(
-		'form.submitted' => 'You have successfully submitted the form. Thank you.'
+		// form messages:
+		'form.submitted' => 'You have successfully submitted the form. Thank you.',
+
+		// validation errors:
+		'validation.error.required' => 'Please fill required field.'
 	);
 
 	/**

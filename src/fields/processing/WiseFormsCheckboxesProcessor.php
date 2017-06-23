@@ -10,7 +10,7 @@ class WiseFormsCheckboxesProcessor extends WiseFormsFieldProcessor {
 	/**
 	 * @param array $field
 	 *
-	 * @return mixed|null
+	 * @return array
 	 */
 	public function getPostedValue($field) {
 		$values = parent::getPostedValue($field);
@@ -28,6 +28,23 @@ class WiseFormsCheckboxesProcessor extends WiseFormsFieldProcessor {
 		}
 
 		return $out;
+	}
+
+	/**
+	 * Validate field and returns errors if there are any.
+	 *
+	 * @param WiseFormsForm $form
+	 * @param array $field
+	 *
+	 * @return array Array of errors
+	 */
+	public function validatePostedValue($form, $field) {
+		$postedValue = $this->getPostedValue($field);
+		if ($field['required'] === true && count($postedValue) === 0) {
+			return array($form->getMessage('validation.error.required'));
+		}
+
+		return array();
 	}
 
 	/**
