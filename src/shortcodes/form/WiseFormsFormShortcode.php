@@ -79,7 +79,13 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 					$field
 				));
 			} else {
-				$fieldRendered = $this->renderView('form/templates/fields/' . ucfirst($field['type']), $field);
+				$fieldRendered = $this->renderView('form/templates/fields/' . ucfirst($field['type']), array_merge(
+					array(
+						'processor' => $this->getFieldProcessor($field),
+						'field' => $field
+					),
+					$field
+				));
 			}
 
 			$fieldErrors = array_key_exists($field['id'], $errors) ? $errors[$field['id']] : array();
@@ -107,12 +113,8 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		$errors = array();
 		$fields = WiseFormsFieldsUtils::getFlatFieldsArray($form);
 
-		$result = array();
 		foreach ($fields as $field) {
-			$processorClassName = 'WiseForms'.ucfirst($field['type']).'Processor';
-
-			/** @var WiseFormsFieldProcessor $processor */
-			$processor = WiseFormsContainer::get('fields/processing/'.$processorClassName);
+			$processor = $this->getFieldProcessor($field);
 
 			if ($processor->isValueProvider()) {
 				$fieldErrors = $processor->validatePostedValue($form, $field);
@@ -135,10 +137,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 
 		$result = array();
 		foreach ($fields as $field) {
-			$processorClassName = 'WiseForms'.ucfirst($field['type']).'Processor';
-
-			/** @var WiseFormsFieldProcessor $processor */
-			$processor = WiseFormsContainer::get('fields/processing/'.$processorClassName);
+			$processor = $this->getFieldProcessor($field);
 
 			if ($processor->isValueProvider()) {
 				$value = $processor->getPostedValue($field);
@@ -163,4 +162,13 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		$this->resultsDao->save($resultObject);
 	}
 
+	/**
+	 * @param array $field Field configuration
+	 * @return WiseFormsFieldProcessor
+	 */
+	private function getFieldProcessor($field) {
+		$processorClassName = 'WiseForms'.ucfirst($field['type']).'Processor';
+
+		return WiseFormsContainer::get('fields/processing/'.$processorClassName);
+	}
 }

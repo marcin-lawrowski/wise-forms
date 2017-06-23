@@ -1,3 +1,6 @@
+<?php
+/** @var WiseFormsFieldProcessor $processor */
+?>
 <div class="<?php if ($labelLocation == 'inline' && strlen($labelWidth) > 0) { ?>wfTable<?php } ?>">
 	<?php if (strlen($label) > 0) { ?>
 		<label for="<?php echo $id; ?>"
@@ -12,8 +15,8 @@
 		<textarea id="<?php echo $id; ?>"
 				name="<?php echo $id; ?>"
 				style="<?php if (strlen($height) > 0) { ?>height: <?php echo $height; ?>px<?php } ?>"
-				placeholder="<?php echo htmlentities($placeholder, ENT_QUOTES, 'UTF-8'); ?>"
+				placeholder="<?php echo $this->safeText($placeholder); ?>"
 				class="wfTextArea<?php if ($width == '100%') { ?> wfWidth100<?php } ?>"
-		></textarea>
+		><?php echo $this->safeText($processor->getPostedValue($field)); ?></textarea>
 	</span>
 </div>

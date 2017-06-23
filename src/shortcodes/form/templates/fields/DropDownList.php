@@ -1,3 +1,6 @@
+<?php
+/** @var WiseFormsFieldProcessor $processor */
+?>
 <div class="<?php if ($labelLocation == 'inline' && strlen($labelWidth) > 0) { ?>wfTable<?php } ?>">
 	<?php if (strlen($label) > 0) { ?>
 		<label for="<?php echo $id; ?>"
@@ -14,11 +17,13 @@
 			   class="wfDropDownList<?php if ($width == '100%') { ?> wfWidth100<?php } ?>"
 		>
 			<?php if (strlen($placeholder) > 0) { ?>
-				<option disabled selected><?php echo htmlentities($placeholder, ENT_QUOTES, 'UTF-8'); ?></option>
+				<option disabled selected><?php echo $this->safeText($placeholder); ?></option>
 			<?php } ?>
 			<?php if (is_array($options)) { ?>
 				<?php foreach ($options as $option) { ?>
-					<option value="<?php echo htmlentities($option['key'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlentities($option['value'], ENT_QUOTES, 'UTF-8'); ?></option>
+					<option value="<?php echo $this->safeText($option['key']); ?>" <?php echo $processor->getPostedValue($field) == $option['key'] ? 'selected' : ''; ?>>
+						<?php echo $this->safeText($option['value']); ?>
+					</option>
 				<?php } ?>
 			<?php } ?>
 		</select>

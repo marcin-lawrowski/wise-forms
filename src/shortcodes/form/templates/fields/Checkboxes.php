@@ -1,3 +1,6 @@
+<?php
+/** @var WiseFormsFieldProcessor $processor */
+?>
 <div class="<?php if ($labelLocation == 'inline' && strlen($labelWidth) > 0) { ?>wfTable<?php } ?>">
 	<?php if (strlen($label) > 0) { ?>
 		<label class="wfFieldLabel<?php if ($labelLocation == 'inline') { ?> wfCell<?php } ?> wfFieldLabelAlign<?php echo ucfirst($labelAlign); ?>"
@@ -6,7 +9,9 @@
 			<?php echo $label; ?><?php if ($required) { ?><span class="wfFieldLabelRequiredMark">*</span><?php } ?>
 		</label>
 	<?php } ?>
-
+	<?php
+		$postedValues = array_keys($processor->getPostedValue($field));
+	?>
 	<span class="<?php if ($labelLocation == 'inline') { ?>wfCell<?php } ?>">
 		<?php if (is_array($options)) { ?>
 			<?php foreach ($options as $key => $option) { ?>
@@ -14,7 +19,8 @@
 						   id="<?php echo $id; ?>_<?php echo $key; ?>"
 						   name="<?php echo $id; ?>[]"
 						   class="wfCheckboxes"
-						   value="<?php echo htmlentities($option['key'], ENT_QUOTES, 'UTF-8'); ?>"
+						   <?php echo in_array($option['key'], $postedValues) ? 'checked' : ''; ?>
+						   value="<?php echo $this->safeText($option['key']); ?>"
 						   /><?php echo $option['value']; ?></label>
 			<?php } ?>
 		<?php } ?>

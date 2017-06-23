@@ -118,6 +118,17 @@ abstract class WiseFormsShortcode {
 	}
 
 	/**
+	 * Returns safe text.
+	 *
+	 * @param string $text
+	 *
+	 * @return string
+	 */
+	protected function safeText($text) {
+		return htmlspecialchars($text, ENT_QUOTES, 'UTF-8');
+	}
+
+	/**
 	 * Renders and returns given view.
 	 *
 	 * @param string $name View's name
