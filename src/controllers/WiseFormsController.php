@@ -69,6 +69,8 @@ abstract class WiseFormsController {
 	 * @return mixed
 	 */
 	protected function getPostParam($paramName, $defaultValue = null) {
+		$paramName = str_replace('.', '_', $paramName);
+
 		return array_key_exists($paramName, $_POST) ? stripslashes_deep($_POST[$paramName]) : $defaultValue;
 	}
 

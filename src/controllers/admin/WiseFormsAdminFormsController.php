@@ -96,6 +96,13 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		if ($form !== null) {
 			$form->setName($this->getPostParam('name'));
 			$form->setFields($this->fillFieldsIDs($this->getPostParam('fields')));
+
+			$messages = array();
+			foreach (WiseFormsForm::$defaultMessages as $id => $message) {
+				$messages[$id] = $this->getPostParam('message.'.$id);
+			}
+			$form->setMessages(json_encode($messages));
+
 			$this->formsDao->save($form);
 
 			$this->addMessage('Form has been saved.');
@@ -198,6 +205,28 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		$this->showView('admin/FormAddEdit', array(
 			'form' => $form,
 		));
+	}
+
+	/**
+	 * @param WiseFormsForm $form
+	 * @return array
+	 */
+	protected function getFormMessages($form) {
+		$currentMessages = json_decode($form->getMessages(), true);
+		if (!is_array($currentMessages)) {
+			$currentMessages = array();
+		}
+
+		$messages = array();
+		foreach (WiseFormsForm::$defaultMessages as $id => $message) {
+			$messages[] = array(
+				'id' => $id,
+				'default' => $message,
+				'value' => array_key_exists($id, $currentMessages) ? $currentMessages[$id] : $message
+			);
+		}
+
+		return $messages;
 	}
 
 }

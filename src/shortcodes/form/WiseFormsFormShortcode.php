@@ -34,14 +34,17 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		}
 
 		// process form sending:
+		$submitted = false;
 		if ($this->hasPostParam('wfSendForm')) {
 			$this->processForm($form);
+			$submitted = true;
 		}
 
 		$fieldsConfiguration = json_decode($form->getFields(), true);
 
 		return $this->renderView('form/templates/FormShortcode', array(
 			'form' => $form,
+			'submitted' => $submitted,
 			'fieldsRendered' => $this->renderFields($fieldsConfiguration)
 		));
 	}

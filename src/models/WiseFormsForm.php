@@ -22,9 +22,21 @@ class WiseFormsForm {
 	private $fields;
 
 	/**
+	 * @var string
+	 */
+	private $messages;
+
+	/**
 	 * @var integer
 	 */
 	private $created;
+
+	/**
+	 * @var array
+	 */
+	public static $defaultMessages = array(
+		'form.submitted' => 'You have successfully submitted the form. Thank you.'
+	);
 
 	/**
 	 * @return int
@@ -88,6 +100,39 @@ class WiseFormsForm {
 	public function setCreated($created)
 	{
 		$this->created = $created;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getMessages()
+	{
+		return $this->messages;
+	}
+
+	/**
+	 * @param string $messages
+	 */
+	public function setMessages($messages)
+	{
+		$this->messages = $messages;
+	}
+
+	public function getMessage($id) {
+		$currentMessages = json_decode($this->getMessages(), true);
+		if (!is_array($currentMessages)) {
+			$currentMessages = array();
+		}
+
+		if (array_key_exists($id, $currentMessages)) {
+			return $currentMessages[$id];
+		}
+
+		if (array_key_exists($id, self::$defaultMessages)) {
+			return self::$defaultMessages[$id];
+		}
+
+		return '';
 	}
 
 }

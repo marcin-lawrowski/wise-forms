@@ -43,6 +43,7 @@ class WiseFormsInstaller {
 				id bigint(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 				name text NOT NULL,
 				fields text,
+				messages text,
 				created bigint(11) DEFAULT '0' NOT NULL
 		) DEFAULT CHARSET=utf8;";
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
