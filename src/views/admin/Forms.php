@@ -22,6 +22,7 @@
 		<tr>
 			<th scope="col" width="40"><span>ID</span></th>
 			<th scope="col"><span>Name</span></th>
+			<th scope="col"><span>Shortcode</span></th>
 			<th scope="col" width="60"></th>
 		</thead>
 
@@ -30,13 +31,14 @@
 				<tr>
 					<td><?php echo $object->getId(); ?></td>
 					<td><a href="<?php echo $this->getEditUrl($object->getId()); ?>"><?php echo $object->getName(); ?></a></td>
+					<td>[wise-forms id="<?php echo $object->getId(); ?>"]</td>
 					<td><a href="<?php echo $this->getEditUrl($object->getId()); ?>" class="button button-primary button-small">Edit</a></td>
 				</tr>
 			<?php } ?>
 
 			<?php if (count($objects) === 0) { ?>
 				<tr>
-					<td colspan="3">No forms found</td>
+					<td colspan="4">No forms found</td>
 				</tr>
 			<?php } ?>
 		</tbody>
