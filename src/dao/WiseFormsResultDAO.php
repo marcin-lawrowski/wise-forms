@@ -107,27 +107,34 @@ class WiseFormsResultDAO {
 	/**
 	 * Returns all for given page.
 	 *
+	 * @param string $keyword
 	 * @param integer $pageNumber Pagination page number
 	 *
 	 * @return WiseFormsResult[]
 	 */
-	public function getAll($pageNumber) {
+	public function getAll($keyword, $pageNumber) {
 		global $wpdb;
 
+		$searchCondition = $this->getSQLCondition($keyword);
+
 		$offset = ($pageNumber - 1) * $this->limit;
-		$sql = sprintf("SELECT * FROM %s ORDER BY id DESC LIMIT %d OFFSET %d;", $this->installer->getResultsTable(), $this->limit, $offset);
+		$sql = sprintf("SELECT * FROM %s %s ORDER BY id DESC LIMIT %d OFFSET %d;", $this->installer->getResultsTable(), $searchCondition, $this->limit, $offset);
 		$rows = $wpdb->get_results($sql);
 
 		return $this->populateMultiData($rows);
 	}
 
 	/**
+	 *
+	 * @param string $keyword
 	 * @return integer
 	 */
-	public function getAllCount() {
+	public function getAllCount($keyword) {
 		global $wpdb;
 
-		$sql = sprintf("SELECT count(id) AS quantity FROM %s;", $this->installer->getResultsTable());
+		$searchCondition = $this->getSQLCondition($keyword);
+
+		$sql = sprintf("SELECT count(id) AS quantity FROM %s %s;", $this->installer->getResultsTable(), $searchCondition);
 		$results = $wpdb->get_results($sql);
 
 		if (is_array($results) && count($results) > 0) {
@@ -171,5 +178,25 @@ class WiseFormsResultDAO {
 		$object->setCreated($rawData->created);
 
 		return $object;
+	}
+
+	private function getSQLCondition($keyword) {
+		$keyword = trim($keyword);
+		if (strlen($keyword) === 0) {
+			return '';
+		}
+
+		$keyword = addslashes(strtolower($keyword));
+		$fields = array('form_name', 'result', 'ip', 'id');
+		$conditions = array();
+		foreach ($fields as $field) {
+			$conditions[] = "LOWER(".$field.") LIKE '%".$keyword."%'";
+		}
+
+		if (count($conditions) > 0) {
+			return ' WHERE ('.implode(' OR ', $conditions).') ';
+		}
+
+		return '';
 	}
 }

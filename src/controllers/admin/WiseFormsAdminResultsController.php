@@ -73,8 +73,9 @@ class WiseFormsAdminResultsController extends WiseFormsController {
 
 	private function indexAction() {
 		$currentPage = $this->getCurrentPageNum();
-		$objects = $this->resultsDao->getAll($currentPage);
-		$total = $this->resultsDao->getAllCount();
+		$keyword = $this->getParam('s');
+		$objects = $this->resultsDao->getAll($keyword, $currentPage);
+		$total = $this->resultsDao->getAllCount($keyword);
 		$totalPages = ceil($total / $this->resultsDao->getLimit());
 
 		$this->showView('admin/Results', array(
@@ -82,6 +83,7 @@ class WiseFormsAdminResultsController extends WiseFormsController {
 			'total' => $total,
 			'totalPages' => $totalPages,
 			'currentPage' => $currentPage,
+			'keyword' => htmlentities($keyword),
 			'url' => $this->getIndexPageUrl(),
 			'urlPageFirst' => $this->getIndexPageUrl(1),
 			'urlPagePrevious' => $this->getIndexPageUrl($currentPage > 1 ? $currentPage - 1 : 1),

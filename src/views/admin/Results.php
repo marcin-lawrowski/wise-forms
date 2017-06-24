@@ -2,6 +2,13 @@
 	<h2>Results</h2>
 
 	<div class="tablenav top">
+		<form method="get" style="float: left;">
+			<label class="screen-reader-text" for="user-search-input">Search:</label>
+			<input type="search" name="s" value="<?php echo $keyword; ?>" style="width: 300px;">
+			<input type="hidden" name="page" value="wise-forms-results">
+			<input type="submit" class="button" value="Search">
+			<input type="button" class="button" value="Reset" onclick="window.location='<?php echo $url; ?>'">
+		</form>
 		<div class="tablenav-pages">
 			<span class="displaying-num"><?php echo $total; ?> results</span>
 			<span class="pagination-links">
