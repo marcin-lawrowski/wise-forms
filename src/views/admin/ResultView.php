@@ -4,20 +4,23 @@
 	/** @var array $flatFields */
 ?>
 <div class="wrap wfAdminPage">
-	<h2>Form: <?php echo $this->safeText($result->getId() > 0 ? $result->getFormName() : 'New Form'); ?></h2>
+	<h2>Form Result: <?php echo $this->safeText($result->getId() > 0 ? $result->getFormName() : 'New Form'); ?></h2>
 
 	<div id="poststuff">
 		<div id="post-body" class="metabox-holder columns-2">
 			<div id="postbox-container-1" class="postbox-container">
 				<div id="side-sortables" class="meta-box-sortables ui-sortable" style="">
 					<div id="submitdiv" class="postbox ">
-						<h2 class="hndle ui-sortable-handle"><span>Publish</span></h2>
+						<h2 class="hndle ui-sortable-handle"><span>Form Result</span></h2>
 						<div class="inside">
 							<div class="submitbox" id="submitpost">
 								<div id="minor-publishing">
 									<div id="misc-publishing-actions">
 										<div class="misc-pub-section curtime misc-pub-curtime">
-											<span id="timestamp">Submitted on: <br /><b><?php echo date(DATE_ISO8601, $result->getCreated()); ?></b></span>
+											<span id="timestamp">Submitted on: <br /><b><?php echo date('Y-m-d H:i:s', $result->getCreated()); ?></b></span>
+										</div>
+										<div class="misc-pub-section curtime misc-pub-curtime">
+											IP: <br /><b><?php echo $result->getIp(); ?></b></span>
 										</div>
 									</div>
 									<div class="clear"></div>
