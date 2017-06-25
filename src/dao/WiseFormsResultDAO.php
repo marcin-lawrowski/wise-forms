@@ -107,15 +107,16 @@ class WiseFormsResultDAO {
 	/**
 	 * Returns all for given page.
 	 *
+	 * @param integer $formId
 	 * @param string $keyword
 	 * @param integer $pageNumber Pagination page number
 	 *
 	 * @return WiseFormsResult[]
 	 */
-	public function getAll($keyword, $pageNumber) {
+	public function getAll($formId, $keyword, $pageNumber) {
 		global $wpdb;
 
-		$searchCondition = $this->getSQLCondition($keyword);
+		$searchCondition = $this->getSQLCondition($formId, $keyword);
 
 		$offset = ($pageNumber - 1) * $this->limit;
 		$sql = sprintf("SELECT * FROM %s %s ORDER BY id DESC LIMIT %d OFFSET %d;", $this->installer->getResultsTable(), $searchCondition, $this->limit, $offset);
@@ -126,13 +127,14 @@ class WiseFormsResultDAO {
 
 	/**
 	 *
+	 * @param integer $formId
 	 * @param string $keyword
 	 * @return integer
 	 */
-	public function getAllCount($keyword) {
+	public function getAllCount($formId, $keyword) {
 		global $wpdb;
 
-		$searchCondition = $this->getSQLCondition($keyword);
+		$searchCondition = $this->getSQLCondition($formId, $keyword);
 
 		$sql = sprintf("SELECT count(id) AS quantity FROM %s %s;", $this->installer->getResultsTable(), $searchCondition);
 		$results = $wpdb->get_results($sql);
@@ -180,9 +182,10 @@ class WiseFormsResultDAO {
 		return $object;
 	}
 
-	private function getSQLCondition($keyword) {
+	private function getSQLCondition($formId, $keyword) {
 		$keyword = trim($keyword);
-		if (strlen($keyword) === 0) {
+		$formId = intval($formId);
+		if (strlen($keyword) === 0 && $formId === 0) {
 			return '';
 		}
 
@@ -193,8 +196,17 @@ class WiseFormsResultDAO {
 			$conditions[] = "LOWER(".$field.") LIKE '%".$keyword."%'";
 		}
 
+		$andConditions = array();
 		if (count($conditions) > 0) {
-			return ' WHERE ('.implode(' OR ', $conditions).') ';
+			$andConditions[] = '('.implode(' OR ', $conditions).')';
+		}
+
+		if ($formId > 0) {
+			$andConditions[] = 'form_id = '.intval($formId);
+		}
+
+		if (count($andConditions) > 0) {
+			return ' WHERE '.implode(' AND ', $andConditions).' ';
 		}
 
 		return '';

@@ -1,10 +1,19 @@
+<?php
+/** @var WiseFormsForm[] $forms */
+?>
 <div class="wrap">
 	<h2>Results</h2>
 
 	<div class="tablenav top">
 		<form method="get" style="float: left;">
 			<label class="screen-reader-text" for="user-search-input">Search:</label>
-			<input type="search" name="s" value="<?php echo $keyword; ?>" style="width: 300px;">
+			<select name="f">
+				<option value="">-- All forms --</option>
+				<?php foreach ($forms as $form) { ?>
+					<option value="<?php echo $form->getId(); ?>" <?php echo $form->getId() == $formId ? 'selected' : ''; ?>><?php echo $form->getName(); ?></option>
+				<?php } ?>
+			</select>
+			<input type="search" name="s" value="<?php echo $keyword; ?>" style="width: 300px;" placeholder="Keyword">
 			<input type="hidden" name="page" value="wise-forms-results">
 			<input type="submit" class="button" value="Search">
 			<input type="button" class="button" value="Reset" onclick="window.location='<?php echo $url; ?>'">

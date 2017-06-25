@@ -118,6 +118,20 @@ class WiseFormsFormDAO {
 	}
 
 	/**
+	 * Returns all.
+	 *
+	 * @return WiseFormsForm[]
+	 */
+	public function getAllNoLimit() {
+		global $wpdb;
+
+		$sql = sprintf("SELECT * FROM %s ORDER BY name ASC;", $this->installer->getFormsTable());
+		$rows = $wpdb->get_results($sql);
+
+		return $this->populateMultiData($rows);
+	}
+
+	/**
 	 * @return integer
 	 */
 	public function getAllCount() {

@@ -74,21 +74,33 @@ class WiseFormsAdminResultsController extends WiseFormsController {
 	private function indexAction() {
 		$currentPage = $this->getCurrentPageNum();
 		$keyword = $this->getParam('s');
-		$objects = $this->resultsDao->getAll($keyword, $currentPage);
-		$total = $this->resultsDao->getAllCount($keyword);
+		$formId = $this->getParam('f');
+		$objects = $this->resultsDao->getAll($formId, $keyword, $currentPage);
+		$total = $this->resultsDao->getAllCount($formId, $keyword);
 		$totalPages = ceil($total / $this->resultsDao->getLimit());
+		$forms = $this->formsDao->getAllNoLimit();
+
+		$urlParams = array();
+		if (strlen($keyword) > 0) {
+			$urlParams['s'] = $keyword;
+		}
+		if (intval($formId) > 0) {
+			$urlParams['f'] = $formId;
+		}
 
 		$this->showView('admin/Results', array(
 			'objects' => $objects,
+			'forms' => $forms,
 			'total' => $total,
 			'totalPages' => $totalPages,
 			'currentPage' => $currentPage,
 			'keyword' => htmlentities($keyword),
+			'formId' => htmlentities($formId),
 			'url' => $this->getIndexPageUrl(),
-			'urlPageFirst' => $this->getIndexPageUrl(1),
-			'urlPagePrevious' => $this->getIndexPageUrl($currentPage > 1 ? $currentPage - 1 : 1),
-			'urlPageNext' => $this->getIndexPageUrl($currentPage < $totalPages ? $currentPage + 1 : $currentPage),
-			'urlPageLast' => $this->getIndexPageUrl($totalPages),
+			'urlPageFirst' => $this->getIndexPageUrl(1, $urlParams),
+			'urlPagePrevious' => $this->getIndexPageUrl($currentPage > 1 ? $currentPage - 1 : 1, $urlParams),
+			'urlPageNext' => $this->getIndexPageUrl($currentPage < $totalPages ? $currentPage + 1 : $currentPage, $urlParams),
+			'urlPageLast' => $this->getIndexPageUrl($totalPages, $urlParams),
 		));
 	}
 
