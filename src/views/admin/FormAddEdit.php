@@ -8,7 +8,7 @@
 				<div id="postbox-container-1" class="postbox-container">
 					<div id="side-sortables" class="meta-box-sortables ui-sortable" style="">
 						<div id="submitdiv" class="postbox ">
-							<h2 class="hndle ui-sortable-handle"><span>Publish</span></h2>
+							<h2 class="hndle ui-sortable-handle"><span>Form Details</span></h2>
 							<div class="inside">
 								<div class="submitbox" id="submitpost">
 									<div id="minor-publishing">
@@ -25,7 +25,10 @@
 											</div>
 											<?php if ($form->getId() > 0) { ?>
 												<div class="misc-pub-section curtime misc-pub-curtime">
-													<span id="timestamp">Published on: <b><?php echo date(DATE_ISO8601, $form->getCreated()); ?></b></span>
+													<span id="timestamp">Created on: <b><?php echo date('Y-m-d H:i:s', $form->getCreated()); ?></b></span>
+												</div>
+												<div class="misc-pub-section">
+													<span>Results: <b><?php echo $resultsCount; ?></b></span>
 												</div>
 											<?php } ?>
 										</div>

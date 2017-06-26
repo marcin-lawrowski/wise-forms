@@ -10,6 +10,11 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 	protected $controllerId = 'wise-forms-forms';
 
 	/**
+	 * @var WiseFormsResultDAO
+	 */
+	private $resultsDao;
+
+	/**
 	 * @var WiseFormsFormDAO
 	 */
 	private $formsDao;
@@ -18,6 +23,7 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 	 * WiseFormsAdminFormsController constructor.
 	 */
 	public function __construct() {
+		$this->resultsDao = WiseFormsContainer::get('dao/WiseFormsResultDAO');
 		$this->formsDao = WiseFormsContainer::get('dao/WiseFormsFormDAO');
 	}
 
@@ -212,6 +218,7 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 
 		$this->showView('admin/FormAddEdit', array(
 			'form' => $form,
+			'resultsCount' => $this->resultsDao->getAllCount($form->getId())
 		));
 	}
 

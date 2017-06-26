@@ -131,7 +131,7 @@ class WiseFormsResultDAO {
 	 * @param string $keyword
 	 * @return integer
 	 */
-	public function getAllCount($formId, $keyword) {
+	public function getAllCount($formId, $keyword = '') {
 		global $wpdb;
 
 		$searchCondition = $this->getSQLCondition($formId, $keyword);
