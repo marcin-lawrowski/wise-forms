@@ -56,11 +56,10 @@
 				<div class="wfTabs tabs-style-flip">
 					<nav>
 						<ul>
-							<li><a href="#wf-tab-base" class="icon icon-plane"><span>Base</span></a></li>
-							<li><a href="#wf-tab-fields" class="icon icon-date"><span>Fields</span></a></li>
-							<li><a href="#wf-tab-messages" class="icon icon-gift"><span>Messages</span></a></li>
-							<li><a href="#wf-tab-target" class="icon icon-coffee"><span>Target</span></a></li>
-							<li><a href="#wf-tab-advanced" class="icon icon-tools"><span>Advanced</span></a></li>
+							<li><a href="#wf-tab-base" class="icon icon-start"><span>Base</span></a></li>
+							<li><a href="#wf-tab-fields" class="icon icon-fields"><span>Fields</span></a></li>
+							<li><a href="#wf-tab-messages" class="icon icon-messages"><span>Messages</span></a></li>
+							<li><a href="#wf-tab-target" class="icon icon-mail"><span>Target</span></a></li>
 						</ul>
 					</nav>
 					<div class="wfTabsContentWrap">
@@ -76,7 +75,6 @@
 						<section id="wf-tab-target-section">
 							<?php include('FormAddEdit-TargetsTab.php'); ?>
 						</section>
-						<section id="wf-tab-advanced-section"><p>5</p></section>
 					</div>
 				</div>
 			</form>
