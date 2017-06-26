@@ -97,11 +97,19 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 			$form->setName($this->getPostParam('name'));
 			$form->setFields($this->fillFieldsIDs($this->getPostParam('fields')));
 
+			// messages:
 			$messages = array();
 			foreach (WiseFormsForm::$defaultMessages as $id => $message) {
 				$messages[$id] = $this->getPostParam('message.'.$id);
 			}
 			$form->setMessages(json_encode($messages));
+
+			// configuration:
+			$configuration = array();
+			foreach (WiseFormsForm::$defaultConfiguration as $id => $configurationValue) {
+				$configuration[$id] = $this->getPostParam($id);
+			}
+			$form->setConfiguration(json_encode($configuration));
 
 			$this->formsDao->save($form);
 

@@ -27,6 +27,11 @@ class WiseFormsForm {
 	private $messages;
 
 	/**
+	 * @var string
+	 */
+	private $configuration;
+
+	/**
 	 * @var integer
 	 */
 	private $created;
@@ -40,6 +45,16 @@ class WiseFormsForm {
 
 		// validation errors:
 		'validation.error.required' => 'Please fill required field.'
+	);
+
+	/**
+	 * @var array
+	 */
+	public static $defaultConfiguration = array(
+		'notifications.email.recipient' => '',
+		'notifications.email.recipient.name' => 'WordPress Administrator',
+		'notifications.email.subject' => 'Form Submission',
+		'notifications.email.template' => "Hello,\n\nA new submission of the form has been registered:\n\n\${fields}\n\n--\n\${ip}",
 	);
 
 	/**
@@ -122,6 +137,22 @@ class WiseFormsForm {
 		$this->messages = $messages;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getConfiguration()
+	{
+		return $this->configuration;
+	}
+
+	/**
+	 * @param string $configuration
+	 */
+	public function setConfiguration($configuration)
+	{
+		$this->configuration = $configuration;
+	}
+
 	public function getMessage($id) {
 		$currentMessages = json_decode($this->getMessages(), true);
 		if (!is_array($currentMessages)) {
@@ -134,6 +165,23 @@ class WiseFormsForm {
 
 		if (array_key_exists($id, self::$defaultMessages)) {
 			return self::$defaultMessages[$id];
+		}
+
+		return '';
+	}
+
+	public function getConfigurationEntry($id) {
+		$currentEntries = json_decode($this->getConfiguration(), true);
+		if (!is_array($currentEntries)) {
+			$currentEntries = array();
+		}
+
+		if (array_key_exists($id, $currentEntries)) {
+			return $currentEntries[$id];
+		}
+
+		if (array_key_exists($id, self::$defaultConfiguration)) {
+			return self::$defaultConfiguration[$id];
 		}
 
 		return '';

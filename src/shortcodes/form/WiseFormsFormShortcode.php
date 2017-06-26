@@ -30,7 +30,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 
 		$form = $this->formsDao->getById(intval($attributes['id']));
 		if ($form === null) {
-			return '<!-- Wise Forms: form does not exist -->';;
+			return '<!-- Wise Forms: form does not exist -->';
 		}
 
 		// process form sending:
@@ -39,7 +39,8 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		if ($this->hasPostParam('wfSendForm')) {
 			$errors = $this->validateForm($form);
 			if (count($errors) === 0) {
-				$this->processForm($form);
+				$result = $this->processForm($form);
+				$this->sendNotifications($form, $result);
 				$submitted = true;
 			}
 		}
@@ -50,7 +51,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 			'form' => $form,
 			'submitted' => $submitted,
 			'hasErrors' => count($errors) > 0,
-			'fieldsRendered' => $this->renderFields($fieldsConfiguration, $errors)
+			'fieldsRendered' => !$submitted ? $this->renderFields($fieldsConfiguration, $errors) : ''
 		));
 	}
 
@@ -128,9 +129,56 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	}
 
 	/**
+	 * Sends notifications after form submission.
+	 *
+	 * @param WiseFormsResult $result
+	 * @param WiseFormsForm $form
+	 */
+	private function sendNotifications($form, $result) {
+		$emailRecipient = trim($form->getConfigurationEntry('notifications.email.recipient'));
+		if (strlen($emailRecipient) === 0) {
+			return;
+		}
+
+		$emailRecipientName = $form->getConfigurationEntry('notifications.email.recipient.name');
+		$emailSubject = $form->getConfigurationEntry('notifications.email.subject');
+		$emailTemplate = $form->getConfigurationEntry('notifications.email.template');
+
+		// render fields:
+		$fieldsList = array();
+		$resultArray = json_decode($result->getResult(), true);
+		$resultArray = is_array($resultArray) ? $resultArray : array();
+		foreach ($resultArray as $fieldResult) {
+			$processor = $this->getFieldProcessor($fieldResult);
+			$fieldName = $fieldResult['name'];
+			$fieldValue = $processor->getValueFromFieldResult($fieldResult);
+
+			$fieldsList[] = $fieldName.': '.$fieldValue;
+		}
+
+		// render e-mail body:
+		$templateParts = array(
+			'fields' => implode("\n", $fieldsList),
+			'ip' => $result->getIp()
+		);
+		foreach ($templateParts as $key => $value) {
+			$emailTemplate = str_replace('${'.$key.'}', $value, $emailTemplate);
+		}
+
+		// include recipient's name:
+		if (strlen($emailRecipientName) > 0) {
+			$emailRecipient = $emailRecipientName.' <'.$emailRecipient.'>';
+		}
+
+		wp_mail($emailRecipient, $emailSubject, $emailTemplate);
+	}
+
+	/**
 	 * Saves the result.
 	 *
 	 * @param WiseFormsForm $form
+	 *
+	 * @return WiseFormsResult
 	 */
 	private function processForm($form) {
 		$fields = WiseFormsFieldsUtils::getFlatFieldsArray($form);
@@ -160,6 +208,8 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		$resultObject->setFormId($form->getId());
 		$resultObject->setFormName($form->getName());
 		$this->resultsDao->save($resultObject);
+
+		return $resultObject;
 	}
 
 	/**

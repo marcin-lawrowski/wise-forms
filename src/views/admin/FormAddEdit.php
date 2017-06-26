@@ -70,7 +70,9 @@
 						<section id="wf-tab-messages-section">
 							<?php include('FormAddEdit-MessagesTab.php'); ?>
 						</section>
-						<section id="wf-tab-target-section"><p>4</p></section>
+						<section id="wf-tab-target-section">
+							<?php include('FormAddEdit-TargetsTab.php'); ?>
+						</section>
 						<section id="wf-tab-advanced-section"><p>5</p></section>
 					</div>
 				</div>

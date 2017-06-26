@@ -52,6 +52,7 @@ class WiseFormsFormDAO {
 			'name' => $object->getName(),
 			'fields' => $object->getFields(),
 			'messages' => $object->getMessages(),
+			'configuration' => $object->getConfiguration(),
 			'created' => $object->getCreated() !== null ? $object->getCreated() : time(),
 		);
 
@@ -177,6 +178,7 @@ class WiseFormsFormDAO {
 		$object->setName($rawData->name);
 		$object->setFields($rawData->fields);
 		$object->setMessages($rawData->messages);
+		$object->setConfiguration($rawData->configuration);
 		$object->setCreated($rawData->created);
 
 		return $object;
