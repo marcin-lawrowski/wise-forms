@@ -52,7 +52,7 @@
 }
 
 .wfDesigner .wfDesignerCenter {
-    margin: 0 250px; overflow-x: auto; white-space: nowrap;
+    margin: 0; margin-right: 250px; overflow-x: auto; white-space: nowrap;
 }
 
 .wfDesigner .wfDesignerRight {
@@ -90,7 +90,39 @@
 }
 
 .wfDesigner .wfDesignerToolBox .wfDesignerFieldTemplate {
-    cursor: pointer; margin-left: 0; margin-right: 0; padding-left: 0; padding-right: 0;
+    cursor: pointer; margin-left: 0; margin-right: 0; padding-left: 35px; padding-right: 0;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIconTextInput {
+    background: url(../../icons/type-box.png) center left no-repeat;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIconTextEditor {
+    background: url(../../icons/text-editor.png) center left no-repeat;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIconParagraph {
+    background: url(../../icons/left-side-alignment.png) center left no-repeat;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIcon2Columns {
+    background: url(../../icons/columns.png) center left no-repeat;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIconSubmit {
+    background: url(../../icons/ok-button.png) center left no-repeat;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIconDropDownList {
+    background: url(../../icons/drop-down-list.png) center left no-repeat;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIconCheckbox {
+    background: url(../../icons/ticked-box.png) center left no-repeat;
+}
+
+.wfDesigner .wfDesignerToolBox .wfIconRadioButton {
+    background: url(../../icons/check-circle.png) center left no-repeat;
 }
 
 .wfDesigner .wfDesignerFieldsContainer {

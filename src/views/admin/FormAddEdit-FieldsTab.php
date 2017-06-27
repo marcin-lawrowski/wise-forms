@@ -34,14 +34,14 @@
 			<h4>Fields</h4>
 			<div class="wfDesignerToolBoxContent">
 				<ul>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="textInput">Text Input</li>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="textArea">Text Area</li>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="container2Cols">2 cols</li>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="paragraph">Paragraph</li>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="buttonSubmit">Submit button</li>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="dropDownList">DropDown list</li>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="checkboxes">Checkboxes list</li>
-					<li class="wfDesignerFieldTemplate" data-field-template-type="radioButtons">Radio button list</li>
+					<li class="wfDesignerFieldTemplate wfIconTextInput" data-field-template-type="textInput">Text Input</li>
+					<li class="wfDesignerFieldTemplate wfIconTextEditor" data-field-template-type="textArea">Text Area</li>
+					<li class="wfDesignerFieldTemplate wfIcon2Columns" data-field-template-type="container2Cols">2 cols</li>
+					<li class="wfDesignerFieldTemplate wfIconParagraph" data-field-template-type="paragraph">Paragraph</li>
+					<li class="wfDesignerFieldTemplate wfIconSubmit" data-field-template-type="buttonSubmit">Submit button</li>
+					<li class="wfDesignerFieldTemplate wfIconDropDownList" data-field-template-type="dropDownList">DropDown list</li>
+					<li class="wfDesignerFieldTemplate wfIconCheckbox" data-field-template-type="checkboxes">Checkboxes list</li>
+					<li class="wfDesignerFieldTemplate wfIconRadioButton" data-field-template-type="radioButtons">Radio button list</li>
 				</ul>
 			</div>
 		</div>
@@ -54,12 +54,6 @@
 		</div>
 	</div>
 	<div class='wfDesignerLeft'>
-		<div class="wfDesignerToolBox">
-			<h4>Form properties</h4>
-			<div class="wfDesignerToolBoxContent">
-				<input type="button" class="wfSaveForm" value="Save" />
-			</div>
-		</div>
 
 	</div>
 	<div class='wfDesignerCenter'>
