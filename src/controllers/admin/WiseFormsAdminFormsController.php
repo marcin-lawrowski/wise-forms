@@ -20,6 +20,14 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 	private $formsDao;
 
 	/**
+	 * @var array
+	 */
+	private $wizardFields = array(
+		'contact' => '[{"label":"Name:","placeholder":"Enter name here","required":true,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","type":"textInput","id":"wfField_ecfbc33e2123be30473bc4659d9166abaec8df27"},{"label":"E-mail:","placeholder":"Enter e-mail here","required":true,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","type":"textInput","id":"wfField_fb4bf9e0e7878a4cecb4b8974d2bb1167c5c6c30"},{"label":"Telephone:","placeholder":"Enter telephone here","required":false,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","type":"textInput","id":"wfField_60f5ab546eac305bae1a79c3cc13da814dd62338"},{"label":"Message:","placeholder":"Enter message here","required":true,"labelLocation":"top","width":"100%","height":"100","labelWidth":"","labelAlign":"left","type":"textArea","id":"wfField_067068c07eedc9f3be0aea15be88a8e9ae0ade49"},{"label":"Submit","align":"right","type":"buttonSubmit","id":"wfField_a5f020e9492637873f251175124f3db67d73732f"}]',
+		'application' => '[{"label":"Which position are you applying for?","placeholder":"","required":true,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","options":[{"key":"PHP Engineer","value":"PHP Engineer"},{"key":"Java Engineer","value":"Java Engineer"},{"key":"Manager","value":"Manager"}],"type":"dropDownList","id":"wfField_b051e5850210cfdcc76200e3eda1085d24464cc6"},{"label":"Are you willing to relocate?","required":true,"labelLocation":"top","labelWidth":"","labelAlign":"left","options":[{"key":"Yes","value":"Yes"},{"key":"No","value":"No"}],"type":"radioButtons","id":"wfField_2c7aaddd69f9bfa30aa78ed0b7f1e866eea007ae"},{"label":"Your name:","placeholder":"Enter your name","required":true,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","type":"textInput","id":"wfField_94a991d417cc85d26992a85ee672768176bfda3f"},{"label":"Home address:","placeholder":"Enter your home address","required":true,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","type":"textInput","id":"wfField_8da10b9567e8d2426b87d0cb57e51ba96d176ba8"},{"label":"Your e-mail:","placeholder":"Enter your e-mail","required":true,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","type":"textInput","id":"wfField_003b615e2d084a5791e2021783094f2b7f20acea"},{"label":"Phone:","placeholder":"Enter your phone number","required":true,"labelLocation":"top","width":"100%","labelWidth":"","labelAlign":"left","type":"textInput","id":"wfField_2b9283abee2d6d7ee6105339da7163863bd831a6"},{"label":"Resume:","placeholder":"Put your resume here","required":true,"labelLocation":"top","width":"100%","height":"200","labelWidth":"","labelAlign":"left","type":"textArea","id":"wfField_1ab44f3de00d9063e794c7b538b2903c00cece07"},{"label":"Send Application","align":"right","type":"buttonSubmit","id":"wfField_c4e58aa6762f169fc1d43e822b5cc28131db11db"}]'
+	);
+
+	/**
 	 * WiseFormsAdminFormsController constructor.
 	 */
 	public function __construct() {
@@ -28,7 +36,9 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 	}
 
 	public function run() {
-		if ($this->hasParam('id')) {
+		if ($this->hasParam('wizard')) {
+			$this->wizardAction();
+		} else if ($this->hasParam('id')) {
 			$this->objectAction();
 		} else if ($this->hasParam('new')) {
 			$this->newObjectAction();
@@ -55,6 +65,23 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		);
 
 		return $this->constructUrl($data);
+	}
+	public function getWizardUrl() {
+		$data = array(
+			'wizard' => 'x'
+		);
+
+		return $this->constructUrl($data);
+	}
+
+	public function getWizardDoneUrl($id) {
+		$data = array(
+			'wizard' => 'x',
+			'id' => $id
+		);
+		$url = $this->constructUrl($data);
+
+		return $url;
 	}
 
 	public function getObjectSaveUrl($id) {
@@ -84,6 +111,48 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		);
 
 		return $this->constructUrl($data);
+	}
+
+	public function getWizardAddUrl() {
+		$data = array(
+			'action' => 'form-wizard-save',
+			'nonce' => wp_create_nonce('form-wizard-save')
+		);
+
+		return $this->constructUrl($data);
+	}
+
+	protected function formWizardSaveAction() {
+		if (!$this->verfiyNonce('form-wizard-save')) {
+			$this->addErrorMessage('Invalid form.');
+			$this->redirect($this->getIndexPageUrl());
+		}
+
+		$form = new WiseFormsForm();
+		$form->setName($this->getPostParam('name'));
+		$form->setFields($this->wizardFields[$this->getPostParam('type')]);
+
+		// messages:
+		$messages = array();
+		foreach (WiseFormsForm::$defaultMessages as $id => $message) {
+			$messages[$id] = $message;
+		}
+		$form->setMessages(json_encode($messages));
+
+		// configuration:
+		$configuration = array();
+		foreach (WiseFormsForm::$defaultConfiguration as $id => $configurationValue) {
+			if ($id == 'notifications.email.recipient') {
+				$configurationValue = $this->getPostParam('email');
+			}
+			$configuration[$id] = $configurationValue;
+		}
+		$form->setConfiguration(json_encode($configuration));
+
+		$this->formsDao->save($form);
+
+		$this->addMessage('A new form has been created.');
+		$this->redirect($this->getWizardDoneUrl($form->getId()));
 	}
 
 	protected function formSaveAction() {
@@ -204,6 +273,15 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 	private function newObjectAction() {
 		$this->showView('admin/FormAddEdit', array(
 			'form' => new WiseFormsForm()
+		));
+	}
+
+	private function wizardAction() {
+		$id = intval($this->getParam('id'));
+		$form = $this->formsDao->getById($id);
+
+		$this->showView('admin/FormWizard', array(
+			'form' => $form
 		));
 	}
 

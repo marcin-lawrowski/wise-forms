@@ -3,6 +3,7 @@
 
 	<div class="tablenav top">
 		<input type="button" class="button button-primary button-large" value="+ Add Form" onclick="window.location = '<?php echo $this->getNewUrl(); ?>';" />
+		<input type="button" class="button button-primary button-large" value="Form Wizard" onclick="window.location = '<?php echo $this->getWizardUrl(); ?>';" />
 
 		<div class="tablenav-pages">
 			<span class="displaying-num"><?php echo $total; ?> forms</span>
