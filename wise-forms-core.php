@@ -3,8 +3,8 @@
 	Plugin Name: Wise Forms
 	Version: 1.0.0
 	Plugin URI: http://kaine.pl/
-	Description: forms
-	Author: Kainex
+	Description: Wise Forms is a plugin for displaying and submitting forms in WordPress. The plugin is extremely configurable and easy installable. It has a growing list of features and constant support.
+	Author: Marcin Ławrowski
 	Author URI: http://kaine.pl
 */
 
