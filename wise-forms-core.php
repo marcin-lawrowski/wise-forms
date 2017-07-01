@@ -12,9 +12,6 @@ require_once(dirname(__FILE__).'/src/WiseFormsContainer.php');
 WiseFormsContainer::load('WiseFormsInstaller');
 WiseFormsContainer::load('WiseFormsOptions');
 
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 if (is_admin()) {
 	// installer:
 	register_activation_hook(__FILE__, array('WiseFormsInstaller', 'activate'));
