@@ -47,9 +47,9 @@
 					<td><a href="<?php echo $this->getEditUrl($object->getId()); ?>"><?php echo $object->getFormName(); ?></a></td>
 					<td><?php echo date('Y-m-d H:i:s', $object->getCreated()); ?></td>
 					<td>
-						<a href="<?php echo $this->getEditUrl($object->getId()); ?>" class="button button-small">View</a>
+						<a href="<?php echo $this->getEditUrl($object->getId()); ?>" class="button button-primary button-small">View</a>
 
-						<a class="button button-primary button-small" href="<?php echo $this->getObjectDeleteUrl($object->getId()); ?>" onclick="return confirm('Are you sure you want to delete the result?')">Delete</a>
+						<a class="button button-small" href="<?php echo $this->getObjectDeleteUrl($object->getId()); ?>" onclick="return confirm('Are you sure you want to delete the result?')">Delete</a>
 					</td>
 				</tr>
 			<?php } ?>

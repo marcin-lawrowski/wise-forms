@@ -24,6 +24,7 @@ wiseforms.admin.core.Designer = function(options) {
 	fieldsContainer.sortable({
 		placeholder: "ui-state-highlight",
 		revert: true,
+		cursor: "move",
 		update: function(event, ui) {
 			updateFieldPreviewFromTemplate(ui.item);
 		}
@@ -189,6 +190,7 @@ wiseforms.admin.core.Designer = function(options) {
 				fieldInstance.find(".wfDesignerFieldsContainer").sortable({
 					placeholder: "ui-state-highlight",
 					revert: false,
+					cursor: "move",
 					update: function(event, ui) {
 						updateFieldPreviewFromTemplate(ui.item);
 					}
@@ -214,14 +216,6 @@ wiseforms.admin.core.Designer = function(options) {
 		}
 
 		return null;
-	}
-
-	function onSaveForm() {
-		var fields = [];
-
-		scanFormForConfiguration(container.find('.wfDesignerForm'), fields);
-
-		console.log(fields);
 	}
 
 	function scanFormForConfiguration(element, fields) {
@@ -289,8 +283,6 @@ wiseforms.admin.core.Designer = function(options) {
 			options.formElement.find('[name="fields"]').val(JSON.stringify(fields));
 		});
 	}
-
-	container.find('.wfSaveForm').click(onSaveForm);
 
 	// start the designer:
 	initialize();

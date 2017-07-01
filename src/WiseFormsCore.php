@@ -54,10 +54,9 @@ class WiseFormsCore {
 	}
 
 	public function initAdminMenu() {
-		add_menu_page('Wise Forms', 'Wise Forms', 'manage_options', 'wise-forms-dashboard', '', 'dashicons-feedback');
-		add_submenu_page('wise-forms-dashboard', 'Dashboard', 'Dashboard', 'manage_options', 'wise-forms-dashboard', array($this, 'adminDashboardAction'));
-		add_submenu_page('wise-forms-dashboard', 'Forms', 'Forms', 'manage_options', 'wise-forms-forms', array($this, 'adminFormsAction'));
-		add_submenu_page('wise-forms-dashboard', 'Results', 'Results', 'manage_options', 'wise-forms-results', array($this, 'adminResultsAction'));
+		add_menu_page('Wise Forms', 'Wise Forms', 'manage_options', 'wise-forms-forms', '', 'dashicons-feedback');
+		add_submenu_page('wise-forms-forms', 'Forms', 'Forms', 'manage_options', 'wise-forms-forms', array($this, 'adminFormsAction'));
+		add_submenu_page('wise-forms-forms', 'Results', 'Results', 'manage_options', 'wise-forms-results', array($this, 'adminResultsAction'));
 	}
 
 	public function adminDashboardAction() {
