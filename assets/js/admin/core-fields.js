@@ -22,18 +22,30 @@ wiseforms.admin.core.Fields = [
 		propertiesTemplateElementId: 'textInputTemplateProperties',
 
 		renderFromProperties: function(properties, fieldInstance) {
+			// insert texts:
 			fieldInstance.find('input').attr('placeholder', properties.placeholder);
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
+			// inline mode:
+			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
+			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+
+			// label hide:
+			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
+
+			// label width:
 			fieldInstance.find('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
-			fieldInstance.find('label').css('display', properties.labelWidth.length > 0 ? 'inline-block' : 'inline');
+
+			// label align:
 			fieldInstance.find('label').css('text-align', properties.labelAlign);
 
+			// 100% width:
+			fieldInstance.find('div > span').toggleClass('wfWidth100', properties.width == '100%');
+			fieldInstance.find('input').toggleClass('wfWidth100', properties.width == '100%');
+
+			// required indicator:
 			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
-			fieldInstance.find('br').toggleClass('wfHidden', properties.labelLocation != 'top' || properties.label.length == 0 && !properties.required);
-			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length == 0 && !properties.required);
-			fieldInstance.children('span').toggleClass('wf100RemaingWidth', properties.width == '100%');
-			fieldInstance.find('label').toggleClass('wfLeft', properties.labelLocation != 'top' && properties.width == '100%');
 		},
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
@@ -63,18 +75,32 @@ wiseforms.admin.core.Fields = [
 		propertiesTemplateElementId: 'textAreaTemplateProperties',
 
 		renderFromProperties: function(properties, fieldInstance) {
+			// insert texts:
 			fieldInstance.find('textarea').attr('placeholder', properties.placeholder);
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
+			// inline mode:
+			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
+			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+
+			// label hide:
+			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
+
+			// label width:
 			fieldInstance.find('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
-			fieldInstance.find('label').css('display', properties.labelWidth.length > 0 ? 'inline-block' : 'inline');
+
+			// label align:
 			fieldInstance.find('label').css('text-align', properties.labelAlign);
 
+			// 100% width:
+			fieldInstance.find('div > span').toggleClass('wfWidth100', properties.width == '100%');
+			fieldInstance.find('textarea').toggleClass('wfWidth100', properties.width == '100%');
+
+			// required indicator:
 			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
-			fieldInstance.find('br').toggleClass('wfHidden', properties.labelLocation != 'top' || properties.label.length == 0 && !properties.required);
-			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length == 0 && !properties.required);
-			fieldInstance.children('span').toggleClass('wf100RemaingWidth', properties.width == '100%');
-			fieldInstance.find('label').toggleClass('wfLeft', properties.labelLocation != 'top' && properties.width == '100%');
+
+			// height:
 			fieldInstance.find('textarea').css('height', properties.height);
 		},
 
@@ -195,17 +221,29 @@ wiseforms.admin.core.Fields = [
 				fieldInstance.find('select > option:not(.wfFieldPlaceholderOption)').remove();
 			}
 
+			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
+			// inline mode:
+			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
+			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+
+			// label hide:
+			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
+
+			// label width:
 			fieldInstance.find('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
-			fieldInstance.find('label').css('display', properties.labelWidth.length > 0 ? 'inline-block' : 'inline');
+
+			// label align:
 			fieldInstance.find('label').css('text-align', properties.labelAlign);
 
+			// 100% width:
+			fieldInstance.find('div > span').toggleClass('wfWidth100', properties.width == '100%');
+			fieldInstance.find('select').toggleClass('wfWidth100', properties.width == '100%');
+
+			// required indicator:
 			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
-			fieldInstance.find('br').toggleClass('wfHidden', properties.labelLocation != 'top' || properties.label.length == 0 && !properties.required);
-			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length == 0 && !properties.required);
-			fieldInstance.children('span').toggleClass('wf100RemaingWidth', properties.width == '100%');
-			fieldInstance.find('label').toggleClass('wfLeft', properties.labelLocation != 'top' && properties.width == '100%');
 		},
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
@@ -306,16 +344,25 @@ wiseforms.admin.core.Fields = [
 				fieldInstance.find('span.wfFieldCheckboxesContainer > label').remove();
 			}
 
+			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
-			fieldInstance.children('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
-			fieldInstance.children('label').css('display', properties.labelWidth.length > 0 ? 'inline-block' : 'inline');
-			fieldInstance.children('label').css('text-align', properties.labelAlign);
+			// inline mode:
+			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
+			fieldInstance.find('div > label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 
+			// label hide:
+			fieldInstance.find('div > label').toggleClass('wfHidden', properties.label.length === 0);
+
+			// label width:
+			fieldInstance.find('div > label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
+
+			// label align:
+			fieldInstance.find('div > label').css('text-align', properties.labelAlign);
+
+			// required indicator:
 			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
-			fieldInstance.find('br.wfLabelDivider').toggleClass('wfHidden', properties.labelLocation != 'top' || properties.label.length == 0 && !properties.required);
-			fieldInstance.children('label').toggleClass('wfHidden', properties.label.length == 0 && !properties.required);
-			fieldInstance.children('label').toggleClass('wfLeft', properties.labelLocation != 'top');
 		},
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
@@ -412,6 +459,27 @@ wiseforms.admin.core.Fields = [
 				fieldInstance.find('span.wfFieldCheckboxesContainer > label').remove();
 			}
 
+			// insert texts:
+			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+
+			// inline mode:
+			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
+			fieldInstance.find('div > label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+
+			// label hide:
+			fieldInstance.find('div > label').toggleClass('wfHidden', properties.label.length === 0);
+
+			// label width:
+			fieldInstance.find('div > label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
+
+			// label align:
+			fieldInstance.find('div > label').css('text-align', properties.labelAlign);
+
+			// required indicator:
+			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
+
+			/*
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
 			fieldInstance.children('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
@@ -422,6 +490,7 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('br.wfLabelDivider').toggleClass('wfHidden', properties.labelLocation != 'top' || properties.label.length == 0 && !properties.required);
 			fieldInstance.children('label').toggleClass('wfHidden', properties.label.length == 0 && !properties.required);
 			fieldInstance.children('label').toggleClass('wfLeft', properties.labelLocation != 'top');
+			*/
 		},
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {

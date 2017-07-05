@@ -1,14 +1,16 @@
 <!-- Field Templates: -->
 <script id="textInputTemplate" type="text/template">
-	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
-	<br />
-	<span><input type="text" /></span>
+	<div>
+		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+		<span><input type="text" /></span>
+	</div>
 </script>
 
 <script id="textAreaTemplate" type="text/template">
-	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
-	<br />
-	<span><textarea></textarea></span>
+	<div>
+		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+		<span><textarea></textarea></span>
+	</div>
 </script>
 
 <script id="paragraphTemplate" type="text/template">
@@ -32,21 +34,22 @@
 </script>
 
 <script id="dropDownListTemplate" type="text/template">
-	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
-	<br />
-	<span><select></select></span>
+	<div>
+		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+		<span><select></select></span>
+	</div>
 </script>
 
 <script id="checkboxesTemplate" type="text/template">
-	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
-	<br class="wfLabelDivider" />
-	<span class="wfFieldCheckboxesContainer"></span>
-	<br class="wfClear" />
+	<div>
+		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+		<span class="wfFieldCheckboxesContainer wfWordWrap"></span>
+	</div>
 </script>
 
 <script id="radioButtonsTemplate" type="text/template">
-	<label><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
-	<br class="wfLabelDivider" />
-	<span class="wfFieldCheckboxesContainer"></span>
-	<br class="wfClear" />
+	<div>
+		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+		<span class="wfFieldCheckboxesContainer wfWordWrap"></span>
+	</div>
 </script>

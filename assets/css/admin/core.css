@@ -154,6 +154,39 @@
 }
 
 /* Form preview styles: */
+
+.wfDesigner .wfFieldInstance .wfFieldLabel {
+    display: block; margin: 0 3px 3px 0;
+}
+
+.wfDesigner .wfFieldInstance .wfTable {
+    display: table; width: 100%; table-layout: fixed;
+}
+
+.wfDesigner .wfFieldInstance .wfCell {
+    display: table-cell; vertical-align: middle;
+}
+
+.wfDesigner .wfFieldInstance .wfHidden {
+    display: none;
+}
+
+.wfDesigner .wfFieldInstance .wfWidth100 {
+    width: 100%;
+}
+
+.wfDesigner .wfFieldInstance p {
+    margin: 0 2px;
+}
+
+.wfDesigner .wfFieldInstance .wfFieldCheckboxesContainer > label {
+    display: inline-block;
+}
+
+.wfDesigner .wfFieldInstance .wfFieldCheckboxesContainer > label > span {
+    display: inline-block; margin-right: 5px;
+}
+
 .wf2Col {
     width: 48%; float: left; display: block; min-height: 20px;
     margin: 2px; border: 1px dashed #9a9a9a;
@@ -169,10 +202,6 @@
 
 .wf100RemaingWidth > input, .wf100RemaingWidth > textarea, .wf100RemaingWidth > select {
     width: 100%;
-}
-
-.wfFieldCheckboxesContainer > label > span {
-    display: inline-block; margin-right: 5px;
 }
 
 .wfWordWrap {
