@@ -155,6 +155,10 @@
 
 /* Form preview styles: */
 
+.wfDesigner .wfFieldInstance.wfFieldInstanceHovered {
+    background-color: rgba(172, 159, 204, 0.19);
+}
+
 .wfDesigner .wfFieldInstance .wfFieldLabel {
     display: block; margin: 0 3px 3px 0;
 }

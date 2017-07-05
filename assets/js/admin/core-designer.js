@@ -282,6 +282,14 @@ wiseforms.admin.core.Designer = function(options) {
 			scanFormForConfiguration(container.find('.wfDesignerForm'), fields);
 			options.formElement.find('[name="fields"]').val(JSON.stringify(fields));
 		});
+
+		container.find('.wfDesignerForm').on('mouseenter', '.wfFieldInstance', function(e) {
+			jQuery(this).addClass('wfFieldInstanceHovered').parents().removeClass('wfFieldInstanceHovered');
+			e.stopPropagation();
+		});
+		container.find('.wfDesignerForm').on('mouseleave', '.wfFieldInstance', function() {
+			jQuery(this).removeClass('wfFieldInstanceHovered').parents(".wfFieldInstance").first().addClass('wfFieldInstanceHovered');
+		});
 	}
 
 	// start the designer:

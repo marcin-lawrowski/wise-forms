@@ -478,19 +478,6 @@ wiseforms.admin.core.Fields = [
 
 			// required indicator:
 			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
-
-			/*
-			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
-
-			fieldInstance.children('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
-			fieldInstance.children('label').css('display', properties.labelWidth.length > 0 ? 'inline-block' : 'inline');
-			fieldInstance.children('label').css('text-align', properties.labelAlign);
-
-			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
-			fieldInstance.find('br.wfLabelDivider').toggleClass('wfHidden', properties.labelLocation != 'top' || properties.label.length == 0 && !properties.required);
-			fieldInstance.children('label').toggleClass('wfHidden', properties.label.length == 0 && !properties.required);
-			fieldInstance.children('label').toggleClass('wfLeft', properties.labelLocation != 'top');
-			*/
 		},
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
