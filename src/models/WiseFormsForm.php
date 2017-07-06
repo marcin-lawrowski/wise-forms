@@ -43,6 +43,7 @@ class WiseFormsForm {
 		// form messages:
 		'form.submitted' => 'You have successfully submitted the form. Thank you.',
 		'form.submission.error' => 'Please correct the highlighted errors and try again.',
+		'form.nonce.error' => 'Please send the form again. It is no longer valid.',
 
 		// validation errors:
 		'validation.error.required' => 'Please fill required field.'

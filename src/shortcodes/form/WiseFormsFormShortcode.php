@@ -51,6 +51,7 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 			'form' => $form,
 			'submitted' => $submitted,
 			'hasErrors' => count($errors) > 0,
+			'errors' => $errors,
 			'fieldsRendered' => !$submitted ? $this->renderFields($fieldsConfiguration, $errors) : ''
 		));
 	}
@@ -112,15 +113,23 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	 */
 	private function validateForm($form) {
 		$errors = array();
-		$fields = WiseFormsFieldsUtils::getFlatFieldsArray($form);
 
-		foreach ($fields as $field) {
-			$processor = $this->getFieldProcessor($field);
+		// validate nonce:
+		if (!wp_verify_nonce($this->getPostParam('wfSendFormNonce'), 'wfSendFormNonceValue')) {
+			$errors['form'][] = $form->getMessage('form.nonce.error');
+		}
 
-			if ($processor->isValueProvider()) {
-				$fieldErrors = $processor->validatePostedValue($form, $field);
-				if (count($fieldErrors) > 0) {
-					$errors[$field['id']] = $fieldErrors;
+		if (count($errors) === 0) {
+			$fields = WiseFormsFieldsUtils::getFlatFieldsArray($form);
+
+			foreach ($fields as $field) {
+				$processor = $this->getFieldProcessor($field);
+
+				if ($processor->isValueProvider()) {
+					$fieldErrors = $processor->validatePostedValue($form, $field);
+					if (count($fieldErrors) > 0) {
+						$errors[$field['id']] = $fieldErrors;
+					}
 				}
 			}
 		}

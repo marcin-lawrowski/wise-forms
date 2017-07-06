@@ -4,7 +4,7 @@ Donate link: http://kaine.pl/projects/wp-plugins/wise-chat/wise-chat-donate
 Tags: forms, plugin, javascript, shortcode, responsive, forms plugin, contact form, wordpress plugin, contact
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 1.0
+Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,10 @@ Wise Forms is a plugin for displaying and submitting forms in WordPress. The plu
 03. Form designer.
 
 == Changelog ==
+
+= 1.1 =
+* CSFR protection
+* Improved styles of the fields designer
 
 = 1.0 =
 
