@@ -46,10 +46,10 @@
 			</div>
 		</div>
 		<br />
-		<div class="wfDesignerToolBox wfDesignerFieldInstanceProperties" style="display: none;">
-			<h4></h4>
+		<div class="wfDesignerToolBox wfDesignerFieldInstanceProperties">
+			<h4>Field Properties</h4>
 			<div class="wfDesignerToolBoxContent">
-
+				<span class="wfDesignerFieldsInstancePropertiesHint">Click form field to edit</span>
 			</div>
 		</div>
 	</div>

@@ -125,6 +125,10 @@
     background: url(../../icons/check-circle.png) center left no-repeat;
 }
 
+.wfDesigner .wfDesignerToolBox .wfDesignerFieldsInstancePropertiesHint {
+    border: 2px dashed #9a9a9a; margin-bottom: 0; padding: 5px; display: block; text-align: center;
+}
+
 .wfDesigner .wfDesignerFieldsContainer {
     min-height: 50px;
 }
