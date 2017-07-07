@@ -71,6 +71,22 @@
     display: inline-block; max-width: 50px;
 }
 
+.wfForm .wfFieldContainer span.wfFieldLayout1col > label {
+    width: 99%;
+}
+
+.wfForm .wfFieldContainer span.wfFieldLayout2cols > label {
+    width: 49%; margin-right: 2px; padding: 0;
+}
+
+.wfForm .wfFieldContainer span.wfFieldLayout3cols > label {
+    width: 32%; margin-right: 2px; padding: 0;
+}
+
+.wfForm .wfFieldContainer span.wfFieldLayout4cols > label {
+    width: 24%; margin-right: 1px; padding: 0;
+}
+
     /* Validation errors */
 .wfForm p.wfValidationErrorMessage {
     margin: 0; padding: 2px 0; color: #ff0000;

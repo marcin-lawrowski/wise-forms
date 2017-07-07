@@ -178,6 +178,18 @@
 				<td><select id="labelAlign" name="labelAlign"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></td>
 			</tr>
 			<tr>
+				<td><label for="layout">Layout: </label></td>
+				<td>
+					<select id="layout" name="layout">
+						<option value="">Flow</option>
+						<option value="1col">1 column</option>
+						<option value="2cols">2 columns</option>
+						<option value="3cols">3 columns</option>
+						<option value="4cols">4 columns</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
 				<td><label for="required">Required: </label></td>
 				<td><input id="required" type="checkbox" name="required" /></td>
 			</tr>
@@ -211,6 +223,18 @@
 			<tr>
 				<td><label for="labelAlign">Label align: </label></td>
 				<td><select id="labelAlign" name="labelAlign"><option value="left">Left</option><option value="center">Center</option><option value="right">Right</option></select></td>
+			</tr>
+			<tr>
+				<td><label for="layout">Layout: </label></td>
+				<td>
+					<select id="layout" name="layout">
+						<option value="">Flow</option>
+						<option value="1col">1 column</option>
+						<option value="2cols">2 columns</option>
+						<option value="3cols">3 columns</option>
+						<option value="4cols">4 columns</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="required">Required: </label></td>

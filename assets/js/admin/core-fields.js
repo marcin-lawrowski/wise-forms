@@ -344,6 +344,16 @@ wiseforms.admin.core.Fields = [
 				fieldInstance.find('span.wfFieldCheckboxesContainer > label').remove();
 			}
 
+			// set layout class:
+			fieldInstance.find('span.wfFieldCheckboxesContainer')
+				.removeClass('wfFieldLayout1col')
+				.removeClass('wfFieldLayout2cols')
+				.removeClass('wfFieldLayout3cols')
+				.removeClass('wfFieldLayout4cols');
+			if (typeof properties.layout !== 'undefined' && properties.layout.length > 0) {
+				fieldInstance.find('span.wfFieldCheckboxesContainer').addClass('wfFieldLayout' + properties.layout);
+			}
+
 			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
@@ -371,6 +381,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
 			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
+			propertiesFormInstance.find('select[name="layout"]').val(properties.layout);
 
 			var options = [];
 			if (jQuery.isArray(properties.options)) {
@@ -406,6 +417,7 @@ wiseforms.admin.core.Fields = [
 			labelLocation: 'top',
 			labelWidth: '',
 			labelAlign: 'left',
+			layout: '',
 			options: [
 				{
 					key: "Option 1",
@@ -459,6 +471,16 @@ wiseforms.admin.core.Fields = [
 				fieldInstance.find('span.wfFieldCheckboxesContainer > label').remove();
 			}
 
+			// set layout class:
+			fieldInstance.find('span.wfFieldCheckboxesContainer')
+				.removeClass('wfFieldLayout1col')
+				.removeClass('wfFieldLayout2cols')
+				.removeClass('wfFieldLayout3cols')
+				.removeClass('wfFieldLayout4cols');
+			if (typeof properties.layout !== 'undefined' && properties.layout.length > 0) {
+				fieldInstance.find('span.wfFieldCheckboxesContainer').addClass('wfFieldLayout' + properties.layout);
+			}
+
 			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
@@ -486,6 +508,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
 			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
+			propertiesFormInstance.find('select[name="layout"]').val(properties.layout);
 
 			var options = [];
 			if (jQuery.isArray(properties.options)) {
@@ -521,6 +544,7 @@ wiseforms.admin.core.Fields = [
 			labelLocation: 'top',
 			labelWidth: '',
 			labelAlign: 'left',
+			layout: '',
 			options: [
 				{
 					key: "Option 1",

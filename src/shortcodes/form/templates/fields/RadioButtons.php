@@ -10,7 +10,7 @@
 		</label>
 	<?php } ?>
 
-	<span class="<?php if ($labelLocation == 'inline') { ?>wfCell<?php } ?>">
+	<span class="<?php if ($labelLocation == 'inline') { ?>wfCell<?php } ?><?php echo strlen($layout) > 0 ? ' wfFieldLayout'.$layout : ''; ?>">
 		<?php if (is_array($options)) { ?>
 			<?php foreach ($options as $key => $option) { ?>
 				<label class="wfRadioButtonsLabel"><input type="radio"
