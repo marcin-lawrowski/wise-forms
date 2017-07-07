@@ -39,7 +39,7 @@
     display: table; width: 100%; table-layout: fixed;
 }
 
-.wfForm .wfFieldContainer label.wfCell, .wfForm .wfFieldContainer span.wfCell {
+.wfForm .wfFieldContainer label.wfCell, .wfForm .wfFieldContainer span.wfCell, .wfForm .wfFieldContainer input.wfCell {
     display: table-cell; vertical-align: middle;
 }
 
@@ -63,7 +63,15 @@
     display: inline-block; width: auto; margin: 0; box-sizing: border-box; margin-right: 2px;
 }
 
-/* Validation errors */
+.wfForm .wfFieldSimpleCaptchaContainer span.wfFieldSimpleCaptchaCalculation {
+    display: inline-block;
+}
+
+.wfForm .wfFieldSimpleCaptchaContainer input.wfFieldInput {
+    display: inline-block; max-width: 50px;
+}
+
+    /* Validation errors */
 .wfForm p.wfValidationErrorMessage {
     margin: 0; padding: 2px 0; color: #ff0000;
 }

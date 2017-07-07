@@ -44,6 +44,7 @@ class WiseFormsCore {
 		WiseFormsContainer::load('controllers/WiseFormsController');
 		WiseFormsContainer::load('shortcodes/WiseFormsShortcode');
 		WiseFormsContainer::load('fields/processing/WiseFormsFieldProcessor');
+		WiseFormsContainer::load('utils/WiseFormsCrypt');
 
 		add_action('wp_enqueue_scripts', array($this, 'enqueueAssets'), 11);
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAdminAssets'), 11);

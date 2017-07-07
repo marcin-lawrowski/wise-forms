@@ -42,6 +42,7 @@
 					<li class="wfDesignerFieldTemplate wfIconDropDownList" data-field-template-type="dropDownList">DropDown list</li>
 					<li class="wfDesignerFieldTemplate wfIconCheckbox" data-field-template-type="checkboxes">Checkboxes list</li>
 					<li class="wfDesignerFieldTemplate wfIconRadioButton" data-field-template-type="radioButtons">Radio button list</li>
+					<li class="wfDesignerFieldTemplate wfIconSimpleCaptcha" data-field-template-type="simpleCaptcha">Simple Captcha</li>
 				</ul>
 			</div>
 		</div>

@@ -22,6 +22,7 @@ Wise Forms is a plugin for displaying and submitting forms in WordPress. The plu
 * **Many input fields**: Many ready-to-use fields to construct your forms: text input, checkboxes, radio buttons, drop down lists, etc.
 * **Unlimited fields**: Create both simple and complex forms without limits.
 * **Unlimited forms**: No limit to forms construction.
+* **SPAM protection**: Protect forms by adding simple captcha field.
 * **Localization**: Translate all texts to your language easily.
 * **E-mail notifications**: Send e-mail after every submission of your forms.
 * **Browsing results**: Browse and search submitted forms.
@@ -49,6 +50,7 @@ Wise Forms is a plugin for displaying and submitting forms in WordPress. The plu
 == Changelog ==
 
 = 1.1 =
+* Simple captcha field
 * CSFR protection
 * Improved styles of the fields designer
 

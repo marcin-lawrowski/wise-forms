@@ -53,3 +53,10 @@
 		<span class="wfFieldCheckboxesContainer wfWordWrap"></span>
 	</div>
 </script>
+
+<script id="simpleCaptchaTemplate" type="text/template">
+	<div>
+		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
+		<span>1 + 2 = <input type="text" class="wfFieldSimpleCaptchaInput" /></span>
+	</div>
+</script>

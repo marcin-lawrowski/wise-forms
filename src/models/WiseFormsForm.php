@@ -46,7 +46,8 @@ class WiseFormsForm {
 		'form.nonce.error' => 'Please send the form again. It is no longer valid.',
 
 		// validation errors:
-		'validation.error.required' => 'Please fill required field.'
+		'validation.error.required' => 'Please fill required field.',
+		'validation.error.captcha' => 'Invalid calculation result.',
 	);
 
 	/**

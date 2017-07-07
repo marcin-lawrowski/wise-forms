@@ -125,6 +125,10 @@
     background: url(../../icons/check-circle.png) center left no-repeat;
 }
 
+.wfDesigner .wfDesignerToolBox .wfIconSimpleCaptcha {
+    background: url(../../icons/shield.png) center left no-repeat;
+}
+
 .wfDesigner .wfDesignerToolBox .wfDesignerFieldsInstancePropertiesHint {
     border: 2px dashed #9a9a9a; margin-bottom: 0; padding: 5px; display: block; text-align: center;
 }
@@ -194,6 +198,11 @@
 .wfDesigner .wfFieldInstance .wfFieldCheckboxesContainer > label > span {
     display: inline-block; margin-right: 5px;
 }
+
+.wfDesigner .wfFieldInstance .wfFieldSimpleCaptchaInput {
+    max-width: 50px;
+}
+
 
 .wf2Col {
     width: 48%; float: left; display: block; min-height: 20px;

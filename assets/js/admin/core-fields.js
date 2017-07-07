@@ -536,6 +536,50 @@ wiseforms.admin.core.Fields = [
 				}
 			]
 		}
+	},
+	{
+		type: 'simpleCaptcha',
+		name: 'Simple Captcha',
+		templateElementId: 'simpleCaptchaTemplate',
+		propertiesTemplateElementId: 'simpleCaptchaTemplateProperties',
+
+		renderFromProperties: function(properties, fieldInstance) {
+			// insert texts:
+			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+
+			// inline mode:
+			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
+			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
+
+			// label hide:
+			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
+
+			// label width:
+			fieldInstance.find('label').css('width', properties.labelWidth.length > 0 ? properties.labelWidth : 'auto');
+
+			// label align:
+			fieldInstance.find('label').css('text-align', properties.labelAlign);
+
+			// required indicator:
+			fieldInstance.find('.wfFieldPropertyRequired').toggleClass('wfHidden', !properties.required);
+		},
+
+		renderPropertiesForm: function(properties, propertiesFormInstance) {
+			propertiesFormInstance.find('input[name="label"]').val(properties.label);
+			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
+			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
+			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
+		},
+
+		initialProperties: {
+			label: 'Calculate:',
+			required: true,
+			labelLocation: 'top',
+			labelWidth: '',
+			labelAlign: 'left'
+		}
 	}
 
 ];
