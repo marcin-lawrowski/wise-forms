@@ -14,6 +14,10 @@ Forms plugin for WordPress. Drag and drop configuration, easy setup, unlimited f
 
 Wise Forms is a plugin for displaying and submitting forms in WordPress. The plugin is extremely configurable and easy installable. It has a growing list of features and constant support.
 
+= Demo: =
+
+**[Try DEMO here](http://kaine.pl/projects/wp-plugins/wise-forms/demos/)**
+
 = List of features: =
 
 * **Easy installation**: The plugin can be installed using a convenient shortcode, widget or PHP function. Multiple forms can be embedded on the same page.
