@@ -45,10 +45,12 @@ class WiseFormsCore {
 		WiseFormsContainer::load('shortcodes/WiseFormsShortcode');
 		WiseFormsContainer::load('fields/processing/WiseFormsFieldProcessor');
 		WiseFormsContainer::load('utils/WiseFormsCrypt');
+		WiseFormsContainer::load('WiseFormsWidget');
 
 		add_action('wp_enqueue_scripts', array($this, 'enqueueAssets'), 11);
 		add_action('admin_enqueue_scripts', array($this, 'enqueueAdminAssets'), 11);
 		add_action('admin_menu', array($this, 'initAdminMenu'));
+		add_action('widgets_init', array($this, 'initWidgets'));
 
 		// register shortcodes:
 		add_shortcode('wise-forms', array(WiseFormsContainer::get('shortcodes/form/WiseFormsFormShortcode'), 'render'));
@@ -58,6 +60,10 @@ class WiseFormsCore {
 		add_menu_page('Wise Forms', 'Wise Forms', 'manage_options', 'wise-forms-forms', '', 'dashicons-feedback');
 		add_submenu_page('wise-forms-forms', 'Forms', 'Forms', 'manage_options', 'wise-forms-forms', array($this, 'adminFormsAction'));
 		add_submenu_page('wise-forms-forms', 'Results', 'Results', 'manage_options', 'wise-forms-results', array($this, 'adminResultsAction'));
+	}
+
+	public function initWidgets() {
+		register_widget("WiseFormsWidget");
 	}
 
 	public function adminDashboardAction() {

@@ -37,11 +37,16 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 		$submitted = false;
 		$errors = array();
 		if ($this->hasPostParam('wfSendForm')) {
-			$errors = $this->validateForm($form);
-			if (count($errors) === 0) {
-				$result = $this->processForm($form);
-				$this->sendNotifications($form, $result);
-				$submitted = true;
+			$formPublicId = $this->getPostParam('wfSendForm');
+			$formId = WiseFormsCrypt::decrypt(base64_decode($formPublicId));
+
+			if ($formId == $form->getId()) {
+				$errors = $this->validateForm($form);
+				if (count($errors) === 0) {
+					$result = $this->processForm($form);
+					$this->sendNotifications($form, $result);
+					$submitted = true;
+				}
 			}
 		}
 
