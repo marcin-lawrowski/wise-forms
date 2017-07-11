@@ -4,7 +4,7 @@ Donate link: http://kaine.pl/projects/wp-plugins/wise-chat/wise-chat-donate
 Tags: forms, plugin, javascript, shortcode, responsive, forms plugin, contact form, wordpress plugin, contact, widget
 Requires at least: 3.6
 Tested up to: 4.8
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
