@@ -62,6 +62,9 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 
 == Changelog ==
 
+= 1.2 =
+* Bottom mode for labels on all controls
+
 = 1.1 =
 * Widget for displaying forms in sidebars
 * Columns layout for checkboxes and radio buttons
