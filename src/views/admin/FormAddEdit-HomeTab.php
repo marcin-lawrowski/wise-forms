@@ -14,7 +14,7 @@
 							<input name="name" type="text" id="name" value="<?php echo $this->safeText($form->getName()); ?>" class="regular-text" required />
 						</td>
 					</tr>
-					<?php if ($form !== null) { ?>
+					<?php if ($form !== null && $form->getId() > 0) { ?>
 						<tr>
 							<th scope="row">
 								<label for="name">Shortcode:</label>

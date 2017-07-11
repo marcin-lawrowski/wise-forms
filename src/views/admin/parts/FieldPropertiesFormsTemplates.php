@@ -13,8 +13,14 @@
 				<td><input type="text" id="labelWidth" name="labelWidth" style="width: 70px" placeholder="auto" />&nbsp;px</td>
 			</tr>
 			<tr>
-				<td><label>Label location: </label></td>
-				<td><label><input type="radio" name="labelLocation" value="top" />Top</label>&nbsp;&nbsp;<label><input type="radio" name="labelLocation" value="inline" />Inline</label></td>
+				<td><label for="labelLocation">Label location: </label></td>
+				<td>
+					<select id="labelLocation" name="labelLocation">
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+						<option value="inline">Inline</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="labelAlign">Label align: </label></td>
@@ -52,8 +58,14 @@
 				<td><input type="text" id="labelWidth" name="labelWidth" style="width: 70px" placeholder="auto" />&nbsp;px</td>
 			</tr>
 			<tr>
-				<td><label>Label location: </label></td>
-				<td><label><input type="radio" name="labelLocation" value="top" />Top</label>&nbsp;&nbsp;<label><input type="radio" name="labelLocation" value="inline" />Inline</label></td>
+				<td><label for="labelLocation">Label location: </label></td>
+				<td>
+					<select id="labelLocation" name="labelLocation">
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+						<option value="inline">Inline</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="labelAlign">Label align: </label></td>
@@ -125,8 +137,14 @@
 				<td><input type="text" id="labelWidth" name="labelWidth" style="width: 70px" placeholder="auto" />&nbsp;px</td>
 			</tr>
 			<tr>
-				<td><label>Label location: </label></td>
-				<td><label><input type="radio" name="labelLocation" value="top" />Top</label>&nbsp;&nbsp;<label><input type="radio" name="labelLocation" value="inline" />Inline</label></td>
+				<td><label for="labelLocation">Label location: </label></td>
+				<td>
+					<select id="labelLocation" name="labelLocation">
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+						<option value="inline">Inline</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="labelAlign">Label align: </label></td>
@@ -170,8 +188,14 @@
 				<td><input type="text" id="labelWidth" name="labelWidth" style="width: 70px" placeholder="auto" />&nbsp;px</td>
 			</tr>
 			<tr>
-				<td><label>Label location: </label></td>
-				<td><label><input type="radio" name="labelLocation" value="top" />Top</label>&nbsp;&nbsp;<label><input type="radio" name="labelLocation" value="inline" />Inline</label></td>
+				<td><label for="labelLocation">Label location: </label></td>
+				<td>
+					<select id="labelLocation" name="labelLocation">
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+						<option value="inline">Inline</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="labelAlign">Label align: </label></td>
@@ -217,8 +241,14 @@
 				<td><input type="text" id="labelWidth" name="labelWidth" style="width: 70px" placeholder="auto" />&nbsp;px</td>
 			</tr>
 			<tr>
-				<td><label>Label location: </label></td>
-				<td><label><input type="radio" name="labelLocation" value="top" />Top</label>&nbsp;&nbsp;<label><input type="radio" name="labelLocation" value="inline" />Inline</label></td>
+				<td><label for="labelLocation">Label location: </label></td>
+				<td>
+					<select id="labelLocation" name="labelLocation">
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+						<option value="inline">Inline</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="labelAlign">Label align: </label></td>
@@ -264,8 +294,14 @@
 				<td><input type="text" id="labelWidth" name="labelWidth" style="width: 70px" placeholder="auto" />&nbsp;px</td>
 			</tr>
 			<tr>
-				<td><label>Label location: </label></td>
-				<td><label><input type="radio" name="labelLocation" value="top" />Top</label>&nbsp;&nbsp;<label><input type="radio" name="labelLocation" value="inline" />Inline</label></td>
+				<td><label for="labelLocation">Label location: </label></td>
+				<td>
+					<select id="labelLocation" name="labelLocation">
+						<option value="top">Top</option>
+						<option value="bottom">Bottom</option>
+						<option value="inline">Inline</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="labelAlign">Label align: </label></td>

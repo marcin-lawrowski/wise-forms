@@ -31,6 +31,13 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 
+			// label top / bottom mode:
+			if (properties.labelLocation == 'bottom') {
+				fieldInstance.find('label').before(fieldInstance.find('div > span'));
+			} else {
+				fieldInstance.find('label').after(fieldInstance.find('div > span'));
+			}
+
 			// label hide:
 			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
 
@@ -53,7 +60,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
-			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
 			propertiesFormInstance.find('select[name="width"]').val(properties.width);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
 		},
@@ -84,6 +91,13 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 
+			// label top / bottom mode:
+			if (properties.labelLocation == 'bottom') {
+				fieldInstance.find('label').before(fieldInstance.find('div > span'));
+			} else {
+				fieldInstance.find('label').after(fieldInstance.find('div > span'));
+			}
+
 			// label hide:
 			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
 
@@ -109,7 +123,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
-			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
 			propertiesFormInstance.find('select[name="width"]').val(properties.width);
 			propertiesFormInstance.find('input[name="height"]').val(properties.height == 'auto' ? '' : properties.height);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
@@ -229,6 +243,13 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 
+			// label top / bottom mode:
+			if (properties.labelLocation == 'bottom') {
+				fieldInstance.find('label').before(fieldInstance.find('div > span'));
+			} else {
+				fieldInstance.find('label').after(fieldInstance.find('div > span'));
+			}
+
 			// label hide:
 			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
 
@@ -251,7 +272,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
-			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
 			propertiesFormInstance.find('select[name="width"]').val(properties.width);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
 
@@ -362,6 +383,13 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('div > label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 
+			// label top / bottom mode:
+			if (properties.labelLocation == 'bottom') {
+				fieldInstance.find('div > label').before(fieldInstance.find('div > span'));
+			} else {
+				fieldInstance.find('div > label').after(fieldInstance.find('div > span'));
+			}
+
 			// label hide:
 			fieldInstance.find('div > label').toggleClass('wfHidden', properties.label.length === 0);
 
@@ -379,7 +407,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
-			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
 			propertiesFormInstance.find('select[name="layout"]').val(properties.layout);
 
@@ -489,6 +517,13 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('div > label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 
+			// label top / bottom mode:
+			if (properties.labelLocation == 'bottom') {
+				fieldInstance.find('div > label').before(fieldInstance.find('div > span'));
+			} else {
+				fieldInstance.find('div > label').after(fieldInstance.find('div > span'));
+			}
+
 			// label hide:
 			fieldInstance.find('div > label').toggleClass('wfHidden', properties.label.length === 0);
 
@@ -506,7 +541,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
-			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
 			propertiesFormInstance.find('select[name="layout"]').val(properties.layout);
 
@@ -576,6 +611,13 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('label').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 			fieldInstance.find('div > span').toggleClass('wfCell', properties.labelLocation == 'inline' && properties.label.length > 0);
 
+			// label top / bottom mode:
+			if (properties.labelLocation == 'bottom') {
+				fieldInstance.find('label').before(fieldInstance.find('div > span'));
+			} else {
+				fieldInstance.find('label').after(fieldInstance.find('div > span'));
+			}
+
 			// label hide:
 			fieldInstance.find('label').toggleClass('wfHidden', properties.label.length === 0);
 
@@ -593,7 +635,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
-			propertiesFormInstance.find('input[name="labelLocation"][value="' + properties.labelLocation + '"]').prop("checked", true);
+			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
 		},
 
