@@ -1,18 +1,16 @@
 <?php
 /** @var WiseFormsFieldProcessor $processor */
 ?>
-<div class="<?php if ($labelLocation == 'inline' && strlen($labelWidth) > 0) { ?>wfTable<?php } ?>">
+<div class="<?php echo $containerClasses; ?>">
 	<?php if (strlen($label) > 0 && $labelLocation != 'bottom') { ?>
-		<label class="wfFieldLabel<?php if ($labelLocation == 'inline') { ?> wfCell<?php } ?> wfFieldLabelAlign<?php echo ucfirst($labelAlign); ?>"
-			   style="<?php if (strlen($labelWidth) > 0) { ?>width: <?php echo $labelWidth; ?>px<?php } ?>"
-		>
+		<label class="<?php echo $labelClasses; ?>" style="<?php echo $labelStyles; ?>">
 			<?php echo $label; ?><?php if ($required) { ?><span class="wfFieldLabelRequiredMark">*</span><?php } ?>
 		</label>
 	<?php } ?>
 	<?php
 		$postedValues = array_keys($processor->getPostedValue($field));
 	?>
-	<span class="<?php if ($labelLocation == 'inline') { ?>wfCell<?php } ?><?php echo strlen($layout) > 0 ? ' wfFieldLayout'.$layout : ''; ?>">
+	<span class="<?php echo $inputContainerClasses; ?>">
 		<?php if (is_array($options)) { ?>
 			<?php foreach ($options as $key => $option) { ?>
 				<label class="wfCheckboxesLabel"><input type="checkbox"
@@ -27,9 +25,7 @@
 	</span>
 
 	<?php if (strlen($label) > 0 && $labelLocation == 'bottom') { ?>
-		<label class="wfFieldLabel wfFieldLabelAlign<?php echo ucfirst($labelAlign); ?>"
-			   style="<?php if (strlen($labelWidth) > 0) { ?>width: <?php echo $labelWidth; ?>px<?php } ?>"
-		>
+		<label class="<?php echo $labelClasses; ?>" style="<?php echo $labelStyles; ?>">
 			<?php echo $label; ?><?php if ($required) { ?><span class="wfFieldLabelRequiredMark">*</span><?php } ?>
 		</label>
 	<?php } ?>

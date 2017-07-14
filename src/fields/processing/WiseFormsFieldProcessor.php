@@ -70,6 +70,17 @@ abstract class WiseFormsFieldProcessor {
 	}
 
 	/**
+	 * Returns an additional set of properties used to render the field in front-end.
+	 *
+	 * @param array $field
+	 *
+	 * @return array Array of properties used for rendering
+	 */
+	public function getRenderedViewProperties($field) {
+		return array();
+	}
+
+	/**
 	 * Returns given POST parameter.
 	 *
 	 * @param string $parameter

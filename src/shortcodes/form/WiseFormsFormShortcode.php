@@ -86,12 +86,14 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 					$field
 				));
 			} else {
+				$processor = $this->getFieldProcessor($field);
 				$fieldRendered = $this->renderView('form/templates/fields/' . ucfirst($field['type']), array_merge(
 					array(
-						'processor' => $this->getFieldProcessor($field),
+						'processor' => $processor,
 						'field' => $field
 					),
-					$field
+					$field,
+					$processor->getRenderedViewProperties($field)
 				));
 			}
 

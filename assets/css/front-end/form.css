@@ -76,7 +76,7 @@
 }
 
 .wfForm .wfFieldContainer span.wfFieldLayout2cols > label {
-    width: 49%; margin-right: 2px; padding: 0;
+    width: 49%; margin-right: 0; padding: 0; padding-right: 2px;
 }
 
 .wfForm .wfFieldContainer span.wfFieldLayout3cols > label {
