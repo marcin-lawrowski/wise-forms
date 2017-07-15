@@ -65,6 +65,7 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 
 = 1.2 =
 * Validate e-mails, numbers and dates on text input field
+* Option to hide / show form title
 * Bottom mode for labels on all controls
 * Fixed: sending the same forms on the same page
 

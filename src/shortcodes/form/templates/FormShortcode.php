@@ -5,7 +5,10 @@
 /** @var boolean $hasErrors */
 /** @var array $errors */
 ?>
-<h1><?php echo $form->getName(); ?></h1>
+
+<?php if ($form->getConfigurationEntry('appearance.header') == '1') { ?>
+	<h1><?php echo $form->getName(); ?></h1>
+<?php } ?>
 
 <?php if (!$submitted) { ?>
 	<form class="wfForm" method="post">

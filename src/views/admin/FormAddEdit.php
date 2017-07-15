@@ -30,6 +30,9 @@
 												<div class="misc-pub-section">
 													<span>Results: <b><?php echo $resultsCount; ?></b></span>
 												</div>
+												<div class="misc-pub-section">
+													<span>Shortcode: <pre><code>[wise-forms id="<?php echo $form->getId(); ?>"]</code></pre></span>
+												</div>
 											<?php } ?>
 										</div>
 										<div class="clear"></div>

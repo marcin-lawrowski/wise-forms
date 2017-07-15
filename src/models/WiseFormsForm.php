@@ -58,6 +58,8 @@ class WiseFormsForm {
 	 * @var array
 	 */
 	public static $defaultConfiguration = array(
+		'appearance.header' => '1',
+
 		'notifications.email.recipient' => '',
 		'notifications.email.recipient.name' => 'WordPress Administrator',
 		'notifications.email.subject' => 'Form Submission',

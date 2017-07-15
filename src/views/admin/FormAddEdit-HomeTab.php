@@ -14,16 +14,21 @@
 							<input name="name" type="text" id="name" value="<?php echo $this->safeText($form->getName()); ?>" class="regular-text" required />
 						</td>
 					</tr>
-					<?php if ($form !== null && $form->getId() > 0) { ?>
-						<tr>
-							<th scope="row">
-								<label for="name">Shortcode:</label>
-							</th>
-							<td>
-								<pre><code>[wise-forms id="<?php echo $form->getId(); ?>"]</code></pre>
-							</td>
-						</tr>
-					<?php } ?>
+					<tr>
+						<th scope="row">
+							<label>Display Name:</label>
+						</th>
+						<td>
+							<label>
+								<input name="appearance.header" type="radio" value="1" <?php echo $form->getConfigurationEntry('appearance.header') == '1' ? 'checked' : ''; ?> />
+								Yes
+							</label>
+							<label>
+								<input name="appearance.header" type="radio" value="0" <?php echo $form->getConfigurationEntry('appearance.header') == '0' ? 'checked' : ''; ?> />
+								No
+							</label>
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
