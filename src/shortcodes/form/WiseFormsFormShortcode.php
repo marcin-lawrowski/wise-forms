@@ -17,6 +17,8 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 	 */
 	private $resultsDao;
 
+	private static $instanceId = 0;
+
 	public function __construct() {
 		WiseFormsContainer::load('fields/WiseFormsFieldsUtils');
 		$this->formsDao = WiseFormsContainer::get('dao/WiseFormsFormDAO');
@@ -33,14 +35,19 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 			return '<!-- Wise Forms: form does not exist -->';
 		}
 
+		// increase instance ID:
+		self::$instanceId++;
+
 		// process form sending:
 		$submitted = false;
 		$errors = array();
 		if ($this->hasPostParam('wfSendForm')) {
 			$formPublicId = $this->getPostParam('wfSendForm');
+			$formInstanceIdEncrypted = $this->getPostParam('wfSendFormInstance');
 			$formId = WiseFormsCrypt::decrypt(base64_decode($formPublicId));
+			$formInstanceId = WiseFormsCrypt::decrypt(base64_decode($formInstanceIdEncrypted));
 
-			if ($formId == $form->getId()) {
+			if ($formId == $form->getId() && $formInstanceId == self::$instanceId) {
 				$errors = $this->validateForm($form);
 				if (count($errors) === 0) {
 					$result = $this->processForm($form);
@@ -54,6 +61,8 @@ class WiseFormsFormShortcode extends WiseFormsShortcode {
 
 		return $this->renderView('form/templates/FormShortcode', array(
 			'form' => $form,
+			'formPublicId' => base64_encode(WiseFormsCrypt::encrypt($form->getId())),
+			'formInstanceId' => base64_encode(WiseFormsCrypt::encrypt(self::$instanceId)),
 			'submitted' => $submitted,
 			'hasErrors' => count($errors) > 0,
 			'errors' => $errors,
