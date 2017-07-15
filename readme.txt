@@ -27,6 +27,7 @@ Wise Forms is a plugin for displaying and submitting forms in WordPress. The plu
 * **Layout fields**: Organize fields appearance in columns.
 * **Unlimited fields**: Create both simple and complex forms without limits.
 * **Unlimited forms**: No limits to the number of forms.
+* **Data validation**: Ensure that valid e-mails, numbers and dates are sent by your users.
 * **SPAM protection**: Protect forms by adding captcha field.
 * **Localization**: Translate all texts to your language easily.
 * **E-mail notifications**: Send e-mail after every submission of your forms.
@@ -63,6 +64,7 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 == Changelog ==
 
 = 1.2 =
+* Validate e-mails, numbers and dates on text input field
 * Bottom mode for labels on all controls
 
 = 1.1 =

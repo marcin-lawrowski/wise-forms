@@ -33,6 +33,18 @@
 				<td colspan="2"><input id="placeholder" type="text" name="placeholder" class="wfFullWidth" /></td>
 			</tr>
 			<tr>
+				<td><label for="validation">Validation: </label></td>
+				<td>
+					<select id="validation" name="validation">
+						<option value="">Any Text</option>
+						<option value="email">E-mail</option>
+						<option value="number">Number</option>
+						<option value="date-yyyyy-mm-dd">Date YYYY-MM-DD</option>
+						<option value="date-mm/dd/yyyy">Date MM/DD/YYYY</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
 				<td><label for="required">Required: </label></td>
 				<td><input id="required" type="checkbox" name="required" /></td>
 			</tr>

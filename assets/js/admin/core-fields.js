@@ -63,6 +63,7 @@ wiseforms.admin.core.Fields = [
 			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
 			propertiesFormInstance.find('select[name="width"]').val(properties.width);
 			propertiesFormInstance.find('select[name="labelAlign"]').val(properties.labelAlign);
+			propertiesFormInstance.find('select[name="validation"]').val(properties.validation);
 		},
 
 		initialProperties: {
@@ -72,7 +73,8 @@ wiseforms.admin.core.Fields = [
 			labelLocation: 'top',
 			width: 'auto',
 			labelWidth: '',
-			labelAlign: 'left'
+			labelAlign: 'left',
+			validation: ''
 		}
 	},
 	{

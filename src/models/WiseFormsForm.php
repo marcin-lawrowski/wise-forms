@@ -48,6 +48,10 @@ class WiseFormsForm {
 		// validation errors:
 		'validation.error.required' => 'Please fill required field.',
 		'validation.error.captcha' => 'Invalid calculation result.',
+		'validation.error.textinput.email.invalid' => 'E-mail is invalid.',
+		'validation.error.textinput.number.invalid' => 'The number is invalid.',
+		'validation.error.textinput.dateyyyymmdd.invalid' => 'The date is invalid. Allowed date format: YYYY-MM-DD',
+		'validation.error.textinput.datemmddyyyy.invalid' => 'The date is invalid. Allowed date format: MM/DD/YYYY',
 	);
 
 	/**
