@@ -68,6 +68,7 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 * Option to hide / show form title
 * Bottom mode for labels on all controls
 * Fixed: sending the same forms on the same page
+* Fixed: visual glitches
 
 = 1.1 =
 * Widget for displaying forms in sidebars

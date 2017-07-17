@@ -27,6 +27,10 @@
     display: block; margin: 0 3px 3px 0;
 }
 
+.wfForm .wfFieldContainer label.wfFieldLabel .wfFieldLabelRequiredMark {
+    padding-left: 3px;
+}
+
 .wfForm .wfFieldContainer input.wfFieldInput, .wfForm .wfFieldContainer textarea.wfTextArea, .wfForm .wfFieldContainer select.wfDropDownList {
     display: block; width: auto; margin: 0; box-sizing: border-box;
 }
@@ -37,6 +41,10 @@
 
 .wfForm .wfFieldContainer .wfTable {
     display: table; width: 100%; table-layout: fixed;
+}
+
+.wfForm .wfFieldContainer label.wfCell {
+    white-space: nowrap; padding-right: 3px;
 }
 
 .wfForm .wfFieldContainer label.wfCell, .wfForm .wfFieldContainer span.wfCell, .wfForm .wfFieldContainer input.wfCell {
