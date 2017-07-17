@@ -104,6 +104,16 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		return $this->constructUrl($data);
 	}
 
+	public function getObjectCloneUrl($id) {
+		$data = array(
+			'id' => $id,
+			'action' => 'form-clone',
+			'nonce' => wp_create_nonce('form-clone')
+		);
+
+		return $this->constructUrl($data);
+	}
+
 	public function getObjectAddUrl() {
 		$data = array(
 			'action' => 'form-save',
@@ -244,6 +254,25 @@ class WiseFormsAdminFormsController extends WiseFormsController {
 		$result = $this->formsDao->deleteById($id);
 		if ($result) {
 			$this->addMessage('Form has been deleted.');
+			$this->redirect($this->getIndexPageUrl());
+		} else {
+			$this->addErrorMessage('Form does not exist.');
+			$this->redirect($this->getIndexPageUrl());
+		}
+	}
+
+	protected function formCloneAction() {
+		$id = intval($this->getParam('id'));
+
+		if (!$this->verfiyNonce('form-clone')) {
+			$this->addErrorMessage('Invalid form.');
+			$this->redirect($this->getIndexPageUrl());
+		}
+
+		$form = $this->formsDao->getById($id);
+		if ($form !== null) {
+			$this->formsDao->cloneObject($form);
+			$this->addMessage('Form has been cloned.');
 			$this->redirect($this->getIndexPageUrl());
 		} else {
 			$this->addErrorMessage('Form does not exist.');

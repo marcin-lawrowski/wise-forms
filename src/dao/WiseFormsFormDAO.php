@@ -68,6 +68,22 @@ class WiseFormsFormDAO {
 	}
 
 	/**
+	 * @param WiseFormsForm $object
+	 * @return WiseFormsForm
+	 * @throws Exception
+	 */
+	public function cloneObject($object) {
+		$clone = new WiseFormsForm();
+		$clone->setConfiguration($object->getConfiguration());
+		$clone->setMessages($object->getMessages());
+		$clone->setCreated(time());
+		$clone->setFields($object->getFields());
+		$clone->setName('Clone of '.$object->getName());
+
+		return $this->save($clone);
+	}
+
+	/**
 	 * Returns form by ID.
 	 *
 	 * @param integer $id

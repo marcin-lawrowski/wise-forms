@@ -24,7 +24,7 @@
 			<th scope="col" width="40"><span>ID</span></th>
 			<th scope="col"><span>Name</span></th>
 			<th scope="col"><span>Shortcode</span></th>
-			<th scope="col" width="110"></th>
+			<th scope="col" width="160"></th>
 		</thead>
 
 		<tbody>
@@ -35,6 +35,7 @@
 					<td>[wise-forms id="<?php echo $object->getId(); ?>"]</td>
 					<td>
 						<a href="<?php echo $this->getEditUrl($object->getId()); ?>" class="button button-primary button-small">Edit</a>
+						<a href="<?php echo $this->getObjectCloneUrl($object->getId()); ?>" class="button button-primary button-small" onclick="return confirm('Are you sure you want to clone the form?')">Clone</a>
 
 						<a class="button button-small" href="<?php echo $this->getObjectDeleteUrl($object->getId()); ?>" onclick="return confirm('Are you sure you want to delete the form?')">Delete</a>
 					</td>

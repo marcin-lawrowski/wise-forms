@@ -64,6 +64,7 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 == Changelog ==
 
 = 1.2 =
+* Form cloning feature
 * Validate e-mails, numbers and dates on text input field
 * Option to hide / show form title
 * Bottom mode for labels on all controls
