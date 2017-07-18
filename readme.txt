@@ -1,7 +1,7 @@
 === Wise Forms ===
 Contributors: marcin.lawrowski
 Donate link: http://kaine.pl/projects/wp-plugins/wise-chat/wise-chat-donate
-Tags: forms, plugin, javascript, shortcode, responsive, forms plugin, contact form, wordpress plugin, contact, widget
+Tags: forms, form, plugin, javascript, shortcode, responsive, forms plugin, contact form, wordpress plugin, contact, widget
 Requires at least: 3.6
 Tested up to: 4.8
 Stable tag: 1.2
@@ -22,15 +22,17 @@ Wise Forms is a plugin for displaying and submitting forms in WordPress. The plu
 
 * **Easy installation**: The plugin can be installed using a convenient shortcode, widget or PHP function. Multiple forms can be embedded on the same page.
 * **Mobile ready**: Fully responsive design and mobile ready interface.
-* **Drag and drop configuration**: Configure fields and layout of forms using handy drag and drop technique.
+* **Drag and drop configuration**: Configure fields and layout of forms using drag-and-drop technique.
 * **Many input fields**: Many ready-to-use fields to build your forms: text input, checkboxes, radio buttons, drop down lists, captcha, text area, etc.
-* **Layout fields**: Organize fields appearance in columns.
+* **Layout fields**: Organize fields in columns.
 * **Unlimited fields**: Create both simple and complex forms without limits.
 * **Unlimited forms**: No limits to the number of forms.
-* **Data validation**: Ensure that valid e-mails, numbers and dates are sent by your users.
+* **Data validation**: Ensure that only valid e-mails, numbers and dates are sent by your users.
+* **Server-side validation**: All data is validated on the server side.
 * **SPAM protection**: Protect forms by adding captcha field.
-* **Localization**: Translate all texts to your language easily.
-* **E-mail notifications**: Send e-mail after every submission of your forms.
+* **Localization**: Translate all texts to your own language.
+* **E-mail notifications**: Send e-mail after every submission.
+* **Easy cloning of the forms**: Easily copy your forms to test other configurations.
 * **Browsing results**: Browse and search submitted forms.
 * **Form wizard**: Easy step-by-step wizard to create forms from templates.
 * **Widget**: Display your form anywhere using Wise Form widget.
@@ -59,7 +61,11 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 
 01. Sample contact form.
 02. Sample application form.
-03. Form designer.
+03. Form designer: starting point.
+04. Form designer: complex form.
+05. Form designer: messages localization.
+06. Form designer: e-mail notification.
+07. Browsing and searching results.
 
 == Changelog ==
 
