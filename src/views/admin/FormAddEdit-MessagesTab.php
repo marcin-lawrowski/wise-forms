@@ -13,7 +13,7 @@
 					<?php foreach ($this->getFormMessages($form) as $message) { ?>
 						<tr>
 							<td>
-								<input name="message.<?php echo $message['id']; ?>" type="text" value="<?php echo $this->safeText($message['value']); ?>" class="regular-text" required />
+								<input name="message.<?php echo $message['id']; ?>" type="text" value="<?php echo $this->safeText($message['value']); ?>" class="regular-text" />
 
 								<p class="description">
 									"<?php echo $message['default']; ?>"

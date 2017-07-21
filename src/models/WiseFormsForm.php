@@ -168,7 +168,7 @@ class WiseFormsForm {
 			$currentMessages = array();
 		}
 
-		if (array_key_exists($id, $currentMessages)) {
+		if (array_key_exists($id, $currentMessages) && strlen($currentMessages[$id]) > 0) {
 			return $currentMessages[$id];
 		}
 

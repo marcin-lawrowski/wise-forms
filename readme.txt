@@ -71,6 +71,7 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 
 = 1.3 =
 * Default value for text fields
+* Fixed: messages not required
 
 = 1.2 =
 * Form cloning feature
