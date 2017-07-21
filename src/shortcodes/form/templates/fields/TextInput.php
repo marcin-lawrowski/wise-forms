@@ -9,6 +9,7 @@
 /** @var string $inputContainerClasses */
 /** @var string $inputClasses */
 /** @var string $placeholder */
+/** @var string $default */
 ?>
 <div class="<?php echo $containerClasses; ?>">
 	<?php if (strlen($label) > 0 && $labelLocation != 'bottom') { ?>
@@ -21,7 +22,7 @@
 		<input id="<?php echo $id; ?>"
 			   name="<?php echo $id; ?>"
 			   type="text"
-			   value="<?php echo $this->safeText($processor->getPostedValue($field)); ?>"
+			   value="<?php echo $this->safeText($processor->getPostedValueWithDefault($field)); ?>"
 			   placeholder="<?php echo $this->safeText($placeholder); ?>"
 			   class="<?php echo $inputClasses; ?>"
 		/>

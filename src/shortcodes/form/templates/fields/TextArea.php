@@ -14,7 +14,7 @@
 				style="<?php echo $inputStyles; ?>"
 				placeholder="<?php echo $this->safeText($placeholder); ?>"
 				class="<?php echo $inputClasses; ?>"
-		><?php echo $this->safeText($processor->getPostedValue($field)); ?></textarea>
+		><?php echo $this->safeText($processor->getPostedValueWithDefault($field)); ?></textarea>
 	</span>
 
 	<?php if (strlen($label) > 0 && $labelLocation == 'bottom') { ?>

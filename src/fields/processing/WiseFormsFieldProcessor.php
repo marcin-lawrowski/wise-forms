@@ -21,6 +21,30 @@ abstract class WiseFormsFieldProcessor {
 	}
 
 	/**
+	 * @param array $field
+	 *
+	 * @return mixed|null
+	 */
+	public function getPostedValueWithDefault($field) {
+		if ($this->hasPostParam($field['id'])) {
+			return $this->getPostParam($field['id']);
+		} else if (array_key_exists('default', $field)) {
+			return $field['default'];
+		}
+
+		return null;
+	}
+
+	/**
+	 * @param array $field
+	 *
+	 * @return boolean
+	 */
+	public function hasPostedValue($field) {
+		return $this->hasPostParam($field['id']);
+	}
+
+	/**
 	 * Validate field and returns errors if there are any.
 	 *
 	 * @param WiseFormsForm $form

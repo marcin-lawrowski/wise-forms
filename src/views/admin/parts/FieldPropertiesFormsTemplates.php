@@ -33,6 +33,12 @@
 				<td colspan="2"><input id="placeholder" type="text" name="placeholder" class="wfFullWidth" /></td>
 			</tr>
 			<tr>
+				<td colspan="2"><label for="default">Default value:</label></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input id="default" type="text" name="default" class="wfFullWidth" /></td>
+			</tr>
+			<tr>
 				<td><label for="validation">Validation: </label></td>
 				<td>
 					<select id="validation" name="validation">
@@ -88,6 +94,14 @@
 			</tr>
 			<tr>
 				<td colspan="2"><input id="placeholder" type="text" name="placeholder" class="wfFullWidth" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><label for="default">Default value:</label></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<textarea id="default" name="default" class="wfFullWidth"></textarea>
+				</td>
 			</tr>
 			<tr>
 				<td><label for="required">Required: </label></td>

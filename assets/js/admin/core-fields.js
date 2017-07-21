@@ -24,6 +24,7 @@ wiseforms.admin.core.Fields = [
 		renderFromProperties: function(properties, fieldInstance) {
 			// insert texts:
 			fieldInstance.find('input').attr('placeholder', properties.placeholder);
+			fieldInstance.find('input').val(properties.default);
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
 			// inline mode:
@@ -57,6 +58,7 @@ wiseforms.admin.core.Fields = [
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="placeholder"]').val(properties.placeholder);
+			propertiesFormInstance.find('input[name="default"]').val(properties.default);
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
@@ -74,7 +76,8 @@ wiseforms.admin.core.Fields = [
 			width: 'auto',
 			labelWidth: '',
 			labelAlign: 'left',
-			validation: ''
+			validation: '',
+			default: ''
 		}
 	},
 	{
@@ -86,6 +89,7 @@ wiseforms.admin.core.Fields = [
 		renderFromProperties: function(properties, fieldInstance) {
 			// insert texts:
 			fieldInstance.find('textarea').attr('placeholder', properties.placeholder);
+			fieldInstance.find('textarea').val(properties.default);
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
 			// inline mode:
@@ -122,6 +126,7 @@ wiseforms.admin.core.Fields = [
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="placeholder"]').val(properties.placeholder);
+			propertiesFormInstance.find('textarea[name="default"]').val(properties.default);
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
@@ -139,7 +144,8 @@ wiseforms.admin.core.Fields = [
 			width: 'auto',
 			height: 'auto',
 			labelWidth: '',
-			labelAlign: 'left'
+			labelAlign: 'left',
+			default: ''
 		}
 
 	},

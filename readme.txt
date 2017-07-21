@@ -70,6 +70,7 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 == Changelog ==
 
 = 1.3 =
+* Default value for text fields
 
 = 1.2 =
 * Form cloning feature
