@@ -70,6 +70,7 @@ You can display a form using the dedicated widget `Wise Form`. Go to `Appearance
 == Changelog ==
 
 = 1.3 =
+* Option to add additional text description to each field
 * Default value for text fields
 * Fixed: messages not required
 

@@ -23,6 +23,10 @@
     margin: 0 0 10px 0;
 }
 
+.wfForm .wfFieldContainer .wfFieldDescription {
+    margin: 4px 0; padding: 0; font-size: 0.9em;
+}
+
 .wfForm .wfFieldContainer label.wfFieldLabel {
     display: block; margin: 0 3px 3px 0;
 }

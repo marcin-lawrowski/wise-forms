@@ -4,6 +4,7 @@
 		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
 		<span><input type="text" /></span>
 	</div>
+	<p class="wfFieldDescription wfWordWrap description"></p>
 </script>
 
 <script id="textAreaTemplate" type="text/template">
@@ -11,6 +12,7 @@
 		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
 		<span><textarea></textarea></span>
 	</div>
+	<p class="wfFieldDescription wfWordWrap description"></p>
 </script>
 
 <script id="paragraphTemplate" type="text/template">
@@ -38,6 +40,7 @@
 		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
 		<span><select></select></span>
 	</div>
+	<p class="wfFieldDescription wfWordWrap description"></p>
 </script>
 
 <script id="checkboxesTemplate" type="text/template">
@@ -45,6 +48,7 @@
 		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
 		<span class="wfFieldCheckboxesContainer wfWordWrap"></span>
 	</div>
+	<p class="wfFieldDescription wfWordWrap description"></p>
 </script>
 
 <script id="radioButtonsTemplate" type="text/template">
@@ -52,6 +56,7 @@
 		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
 		<span class="wfFieldCheckboxesContainer wfWordWrap"></span>
 	</div>
+	<p class="wfFieldDescription wfWordWrap description"></p>
 </script>
 
 <script id="simpleCaptchaTemplate" type="text/template">
@@ -59,4 +64,5 @@
 		<label class="wfFieldLabel"><span class="wfFieldPropertyLabel"></span><span class="wfFieldPropertyRequired">*</span></label>
 		<span>1 + 2 = <input type="text" class="wfFieldSimpleCaptchaInput" /></span>
 	</div>
+	<p class="wfFieldDescription wfWordWrap description"></p>
 </script>

@@ -25,6 +25,7 @@ wiseforms.admin.core.Fields = [
 			// insert texts:
 			fieldInstance.find('input').attr('placeholder', properties.placeholder);
 			fieldInstance.find('input').val(properties.default);
+			fieldInstance.find('p.wfFieldDescription').html(properties.description);
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
 
 			// inline mode:
@@ -59,6 +60,7 @@ wiseforms.admin.core.Fields = [
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="placeholder"]').val(properties.placeholder);
 			propertiesFormInstance.find('input[name="default"]').val(properties.default);
+			propertiesFormInstance.find('input[name="description"]').val(properties.description);
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
@@ -77,7 +79,8 @@ wiseforms.admin.core.Fields = [
 			labelWidth: '',
 			labelAlign: 'left',
 			validation: '',
-			default: ''
+			default: '',
+			description: ''
 		}
 	},
 	{
@@ -91,6 +94,7 @@ wiseforms.admin.core.Fields = [
 			fieldInstance.find('textarea').attr('placeholder', properties.placeholder);
 			fieldInstance.find('textarea').val(properties.default);
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+			fieldInstance.find('p.wfFieldDescription').html(properties.description);
 
 			// inline mode:
 			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
@@ -127,6 +131,7 @@ wiseforms.admin.core.Fields = [
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="placeholder"]').val(properties.placeholder);
 			propertiesFormInstance.find('textarea[name="default"]').val(properties.default);
+			propertiesFormInstance.find('input[name="description"]').val(properties.description);
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
@@ -145,7 +150,8 @@ wiseforms.admin.core.Fields = [
 			height: 'auto',
 			labelWidth: '',
 			labelAlign: 'left',
-			default: ''
+			default: '',
+			description: ''
 		}
 
 	},
@@ -245,6 +251,7 @@ wiseforms.admin.core.Fields = [
 
 			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+			fieldInstance.find('p.wfFieldDescription').html(properties.description);
 
 			// inline mode:
 			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
@@ -278,6 +285,7 @@ wiseforms.admin.core.Fields = [
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="placeholder"]').val(properties.placeholder);
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
+			propertiesFormInstance.find('input[name="description"]').val(properties.description);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
 			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
@@ -333,7 +341,8 @@ wiseforms.admin.core.Fields = [
 					key: "Option 3",
 					value: "Option 3"
 				}
-			]
+			],
+			description: ''
 		}
 	},
 	{
@@ -385,6 +394,7 @@ wiseforms.admin.core.Fields = [
 
 			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+			fieldInstance.find('p.wfFieldDescription').html(properties.description);
 
 			// inline mode:
 			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
@@ -413,6 +423,7 @@ wiseforms.admin.core.Fields = [
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
+			propertiesFormInstance.find('input[name="description"]').val(properties.description);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
 			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
@@ -467,7 +478,8 @@ wiseforms.admin.core.Fields = [
 					key: "Option 3",
 					value: "Option 3"
 				}
-			]
+			],
+			description: ''
 		}
 	},
 	{
@@ -519,6 +531,7 @@ wiseforms.admin.core.Fields = [
 
 			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+			fieldInstance.find('p.wfFieldDescription').html(properties.description);
 
 			// inline mode:
 			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
@@ -547,6 +560,7 @@ wiseforms.admin.core.Fields = [
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
+			propertiesFormInstance.find('input[name="description"]').val(properties.description);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
 			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
@@ -601,7 +615,8 @@ wiseforms.admin.core.Fields = [
 					key: "Option 3",
 					value: "Option 3"
 				}
-			]
+			],
+			description: ''
 		}
 	},
 	{
@@ -613,6 +628,7 @@ wiseforms.admin.core.Fields = [
 		renderFromProperties: function(properties, fieldInstance) {
 			// insert texts:
 			fieldInstance.find('.wfFieldPropertyLabel').text(properties.label);
+			fieldInstance.find('p.wfFieldDescription').html(properties.description);
 
 			// inline mode:
 			fieldInstance.children('div').toggleClass('wfTable', properties.labelLocation == 'inline' && properties.label.length > 0 && properties.labelWidth.length > 0);
@@ -641,6 +657,7 @@ wiseforms.admin.core.Fields = [
 
 		renderPropertiesForm: function(properties, propertiesFormInstance) {
 			propertiesFormInstance.find('input[name="label"]').val(properties.label);
+			propertiesFormInstance.find('input[name="description"]').val(properties.description);
 			propertiesFormInstance.find('input[name="labelWidth"]').val(properties.labelWidth);
 			propertiesFormInstance.find('input[name="required"]').prop('checked', properties.required);
 			propertiesFormInstance.find('select[name="labelLocation"]').val(properties.labelLocation);
@@ -652,7 +669,8 @@ wiseforms.admin.core.Fields = [
 			required: true,
 			labelLocation: 'top',
 			labelWidth: '',
-			labelAlign: 'left'
+			labelAlign: 'left',
+			description: ''
 		}
 	}
 
